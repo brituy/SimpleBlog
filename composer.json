@@ -1,0 +1,23 @@
+{
+    "name": "Brituy/SimpleBlog",
+    "description": "summary",
+    "license": [
+        "OSL-3.0"
+    ],
+    "type": "magento2-module",
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "Andrei Brituy",
+            "email": "brituy@mail.ru",
+            "homepage": "https://github.com/brituy/",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Vendor\\Module\\": ""
+        }
+    }
+}
