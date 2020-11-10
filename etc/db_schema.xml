@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="brituy_blog_main" resource="default" engine="innodb" comment="Simple Blog main table">
+        <column xsi:type="smallint" name="blog_id" padding="6" unsigned="true" nullable="false" identity="true" comment="Blog ID"/>
+        <column xsi:type="boolean" name="visibility" nullable="false" comment="Article Visible?"/>
+        <column xsi:type="smallint" name="category_id" padding="6" unsigned="true" nullable="false" identity="false" comment="Category ID"/>
+        <column xsi:type="smallint" name="author_id" padding="6" unsigned="true" nullable="false" identity="false" comment="Author ID"/>
+        <column xsi:type="datetime" name="date" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Article Date"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Article Title"/>
+        <column xsi:type="blob" name="content" nullable="true" comment="Article content"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="blog_id"/>
+        </constraint>
+    </table>
+</schema>

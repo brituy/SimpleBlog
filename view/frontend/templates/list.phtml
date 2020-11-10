@@ -1,0 +1,20 @@
+<?php /** @var $block \Brituy\SimpleBlog\Block\PostList */ ?>
+<h1><?php echo __('Latest Blog Articles') ?></h1>
+<ul class="blog-post-articles">
+<?php /** @var $post \Brituy\SimpleBlog\Model\Post */ ?>
+<?php foreach ($block->getPosts() as $post): ?>
+    <li class="blog-post-articles-item">
+        <h3 class="blog-post-item-title">
+            <a href="<?php echo $post->getUrl() ?>"><?php echo $post->getTitle() ?></a>
+        </h3>
+
+        <div class="blog-post-item-content">
+            <?php echo $post->getContent(); ?>
+        </div>
+
+        <div class="blog-post-item-meta">
+            <strong><?php echo __('Created at:') ?></strong> <?php echo $post->getDate() ?>
+        </div>
+    </li>
+<?php endforeach; ?>
+</ul>

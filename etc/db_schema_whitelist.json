@@ -1,0 +1,16 @@
+{
+    "brituy_blog_main": {
+        "column": {
+            "blog_id": true,
+            "visibility": true,
+            "category_id": true,
+            "author_id": true,
+            "date": true,
+            "title": true,
+            "content": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
