@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- Add admin menu item -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Brituy_SimpleBlog::simpleblog" title="Brituy SimpleBlog" module="Brituy_SimpleBlog" sortOrder="51" resource="Brituy_SimpleBlog::simpleblog"/>
+        <add id="Brituy_SimpleBlog::post" title="Manage Articles" module="Brituy_SimpleBlog" sortOrder="10" action="brituy_simpleblog/post" resource="Brituy_SimpleBlog::post" parent="Brituy_SimpleBlog::simpleblog"/>
+        <add id="Brituy_SimpleBlog::blog_config" title="Configuration" module="Brituy_SimpleBlog" sortOrder="99" parent="Brituy_SimpleBlog::simpleblog" action="adminhtml/system_config/edit/section/simpleblog" resource="Brituy_SimpleBlog::simpleblog_config"/>
+    </menu>
+</config>

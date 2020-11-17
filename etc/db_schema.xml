@@ -13,4 +13,19 @@
             <column name="blog_id"/>
         </constraint>
     </table>
+    <table name="brituy_blog_authors" resource="default" engine="innodb" comment="Simple Blog Authors table">
+        <column xsi:type="smallint" name="author_id" padding="6" unsigned="true" nullable="false" identity="true" comment="Author ID"/>
+        <column xsi:type="varchar" name="author" nullable="false" length="100" comment="Author Name"/>
+        <column xsi:type="varchar" name="author_mail" nullable="false" length="100" comment="Author E-Mail"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="author_id"/>
+        </constraint>
+    </table>
+    <table name="brituy_blog_categories" resource="default" engine="innodb" comment="Simple Blog Category table">
+        <column xsi:type="smallint" name="category_id" padding="6" unsigned="true" nullable="false" identity="true" comment="Category ID"/>
+        <column xsi:type="varchar" name="category" nullable="false" length="255" comment="Category Name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="category_id"/>
+        </constraint>
+    </table>
 </schema>

@@ -12,5 +12,24 @@
         "constraint": {
             "PRIMARY": true
         }
+    },
+    "brituy_blog_authors": {
+        "column": {
+            "author_id": true,
+            "author": true,
+            "author_mail": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "brituy_blog_categories": {
+        "column": {
+            "category_id": true,
+            "category": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
     }
 }

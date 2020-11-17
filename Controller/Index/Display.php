@@ -1,4 +1,6 @@
 <?php
+// controller to call the layout file .xml
+// declare the PageFactory and create it in execute method to render view
 namespace Brituy\SimpleBlog\Controller\Index;
 
 class Display extends \Magento\Framework\App\Action\Action
