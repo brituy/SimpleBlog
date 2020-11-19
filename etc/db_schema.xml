@@ -6,7 +6,7 @@
         <column xsi:type="boolean" name="visibility" nullable="false" comment="Article Visible?"/>
         <column xsi:type="smallint" name="category_id" padding="6" unsigned="true" nullable="false" identity="false" comment="Category ID"/>
         <column xsi:type="smallint" name="author_id" padding="6" unsigned="true" nullable="false" identity="false" comment="Author ID"/>
-        <column xsi:type="datetime" name="date" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Article Date"/>
+        <column xsi:type="date" name="blog_date" nullable="false" comment="Article Date"/>
         <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Article Title"/>
         <column xsi:type="blob" name="content" nullable="true" comment="Article content"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
@@ -23,7 +23,7 @@
     </table>
     <table name="brituy_blog_categories" resource="default" engine="innodb" comment="Simple Blog Category table">
         <column xsi:type="smallint" name="category_id" padding="6" unsigned="true" nullable="false" identity="true" comment="Category ID"/>
-        <column xsi:type="varchar" name="category" nullable="false" length="255" comment="Category Name"/>
+        <column xsi:type="varchar" name="category" nullable="false" length="100" comment="Category Name"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="category_id"/>
         </constraint>

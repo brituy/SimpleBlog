@@ -7,7 +7,8 @@
             "author_id": true,
             "date": true,
             "title": true,
-            "content": true
+            "content": true,
+            "blog_date": true
         },
         "constraint": {
             "PRIMARY": true
