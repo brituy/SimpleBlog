@@ -12,6 +12,12 @@
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="blog_id"/>
         </constraint>
+        <constraint xsi:type="foreign" referenceId="Brituy_SimpleBlog_Post_Main_CategoryId" table="brituy_blog_main"
+                    column="category_id" referenceTable="brituy_blog_categories" referenceColumn="category_id"
+                    onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="Brituy_SimpleBlog_Post_Main_AuthorId" table="brituy_blog_main"
+                    column="author_id" referenceTable="brituy_blog_authors" referenceColumn="author_id"
+                    onDelete="CASCADE"/>
     </table>
     <table name="brituy_blog_authors" resource="default" engine="innodb" comment="Simple Blog Authors table">
         <column xsi:type="smallint" name="author_id" padding="6" unsigned="true" nullable="false" identity="true" comment="Author ID"/>

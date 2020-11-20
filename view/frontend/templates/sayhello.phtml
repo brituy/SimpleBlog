@@ -21,7 +21,8 @@ tr:nth-child(even) { background-color: #dddddd; }
 <table>
   <tr>
     <th class="blog-id">Id</th>
-    <th class="date">Date</th>
+    <th class="visibility">Visible</th>
+    <th class="blog_date">Date</th>
     <th class="title">Title</th>
     <th class="content">Content</th>
   </tr>
@@ -30,7 +31,8 @@ tr:nth-child(even) { background-color: #dddddd; }
         {
             echo '<tr>
                     <td>'.$post->getBlogId().'</td>
-                    <td>'.$post->getDate().'</td>
+                    <td>'.$post->getVisibility().'</td>
+                    <td>'.$post->getBlogDate().'</td>
                     <td>'.$post->getTitle().'</td>
                     <td>'.$post->getContent().'</td>
                   </tr>';

@@ -11,7 +11,9 @@
             "blog_date": true
         },
         "constraint": {
-            "PRIMARY": true
+            "PRIMARY": true,
+            "BRITUY_BLOG_MAIN_CATEGORY_ID_BRITUY_BLOG_CATEGORIES_CATEGORY_ID": true,
+            "BRITUY_BLOG_MAIN_AUTHOR_ID_BRITUY_BLOG_AUTHORS_AUTHOR_ID": true
         }
     },
     "brituy_blog_authors": {

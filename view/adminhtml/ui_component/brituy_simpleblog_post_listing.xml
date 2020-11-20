@@ -8,7 +8,7 @@
             <item name="deps" xsi:type="string">brituy_simpleblog_post_listing.brituy_simpleblog_post_listing_data_source</item>
         </item>
         
-        <!-- содержит ссылку на список столбцов в этом же файле, значение должно быть идентично имени, которое вы указали для тега columns. -->
+        <!-- имя `columns`-компонента, после заполнения данными которого spinner скрывается. -->
         <item name="spinner" xsi:type="string">simpleblog_columns</item>
         
         <!-- информация о верхних кнопках -->
@@ -28,6 +28,9 @@
             -->
         </item>
     </argument>
+    
+    <!-- встроенные dataprovider Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
+         коллекция brituy_simpleblog_post_listing_data_source для него объявлена в etc/di.xml -->
     
     <dataSource name="brituy_simpleblog_post_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
