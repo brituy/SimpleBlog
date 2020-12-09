@@ -7,10 +7,10 @@
             <item name="provider" xsi:type="string">brituy_simpleblog_post_listing.brituy_simpleblog_post_listing_data_source</item>
             <item name="deps" xsi:type="string">brituy_simpleblog_post_listing.brituy_simpleblog_post_listing_data_source</item>
         </item>
-        
+
         <!-- имя `columns`-компонента, после заполнения данными которого spinner скрывается. -->
         <item name="spinner" xsi:type="string">simpleblog_columns</item>
-        
+
         <!-- информация о верхних кнопках -->
         <item name="buttons" xsi:type="array">
             <item name="add" xsi:type="array">
@@ -28,10 +28,10 @@
             -->
         </item>
     </argument>
-    
+
     <!-- встроенные dataprovider Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
          коллекция brituy_simpleblog_post_listing_data_source для него объявлена в etc/di.xml -->
-    
+
     <dataSource name="brituy_simpleblog_post_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
@@ -50,7 +50,7 @@
             </argument>
         </argument>
     </dataSource>
-    
+
     <!-- Create a listing toolbar -->
     <listingToolbar name="listing_top">
         <argument name="data" xsi:type="array">
@@ -61,7 +61,7 @@
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
         <exportButton name="export_button"/>
-        <filterSearch name="fulltext"/>  
+        <filterSearch name="fulltext"/>
 
 	<filters name="listing_filters">
         <!-- If you need to apply custom filter render you can use these tag -->
@@ -101,10 +101,10 @@
         </massaction>
         <paging name="listing_paging"/>
     </listingToolbar>
-    
+
     <!-- Create Grid -->
     <columns name="simpleblog_columns">
-   
+
 	<argument name="data" xsi:type="array">
 	    <item name="config" xsi:type="array">
 		<item name="editorConfig" xsi:type="array">
@@ -132,7 +132,7 @@
 		</item>
 	    </item>
 	</argument>
-    
+
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -142,7 +142,7 @@
                 </item>
             </argument>
         </selectionsColumn>
-        
+
         <column name="blog_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -154,7 +154,7 @@
                 </item>
             </argument>
         </column>
-        
+
         <column name="visibility">
             <argument name="data" xsi:type="array">
 		<item name="options" xsi:type="array">
@@ -176,7 +176,7 @@
 		</item>
             </argument>
         </column>
-        
+
         <column name="blog_date" class="Magento\Ui\Component\Listing\Columns\Date">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -184,11 +184,11 @@
                     <item name="filter" xsi:type="string">dateRange</item>
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
                     <item name="label" xsi:type="string" translate="true">Created</item>
-                    <item name="dateFormat" xsi:type="string">MMM d, YYYY</item>
+                    <item name="dateFormat" xsi:type="string">dd-MM-yyyy</item>
                 </item>
             </argument>
         </column>
-        
+
         <column name="category_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -200,7 +200,7 @@
                 </item>
             </argument>
         </column>
-        
+
         <column name="author_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -212,7 +212,7 @@
                 </item>
             </argument>
         </column>
-        
+
         <column name="title">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -236,7 +236,7 @@
 		    <item name="urlEntityParamName" xsi:type="string">blog_id</item>
 		</item>
 	    </argument>
-	</actionsColumn>	
+	</actionsColumn>
 
     </columns>
 </listing>

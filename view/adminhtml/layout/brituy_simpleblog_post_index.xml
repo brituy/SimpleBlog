@@ -1,9 +1,9 @@
 <!-- declare an uiComponent for the content of this page
-     layout file For the action mageplaza_helloworld/post/index
+     layout file For the action brituy_simpleblog/post/index
      название состоит из трех частей:
-     fl32_sample_route: внтуренний идентификатор маршрута (см. route.id в ./etc/adminhtml/routes.xml);
-     grid: вторая часть адреса перенаправления (см. action в ./etc/adminhtml/menu.xml);
-     index: имя обработчика по-умолчанию для запросов по адресу.../index.php/admin/sample/grid/ (см. ./src/Controller/Adminhtml/Grid/Index.php); -->
+     brituy_simpleblog: внтуренний идентификатор маршрута (см. route.id в ./etc/adminhtml/routes.xml);
+     post: вторая часть адреса перенаправления (см. action в ./etc/adminhtml/menu.xml);
+     index: имя обработчика по-умолчанию для запросов по адресу.../index.php/admin/simpleblog/post/ (см. ./src/Controller/Adminhtml/Post/Index.php); -->
 
 <!-- на странице нужно вывести UI-компонент с именем brituy_simpleblog_post_listing.
      Дескриптор компонента находится в файле ./src/view/adminhtml/ui_component/brituy_simpleblog_post_listing.xml -->

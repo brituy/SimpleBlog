@@ -12,6 +12,7 @@ class Display extends \Magento\Framework\App\Action\Action
 	{
 		$this->_pageFactory = $pageFactory;
 		return parent::__construct($context);
+
 	}
 
 	public function execute()

@@ -1,18 +1,29 @@
-<!-- declare an uiComponent for the content of this page
-     layout file For the action mageplaza_helloworld/post/index
-     название состоит из трех частей:
-     fl32_sample_route: внтуренний идентификатор маршрута (см. route.id в ./etc/adminhtml/routes.xml);
-     grid: вторая часть адреса перенаправления (см. action в ./etc/adminhtml/menu.xml);
-     index: имя обработчика по-умолчанию для запросов по адресу.../index.php/admin/sample/grid/ (см. ./src/Controller/Adminhtml/Grid/Index.php); -->
+<?xml version="1.0"?>
 
-<!-- на странице нужно вывести UI-компонент с именем brituy_simpleblog_post_listing.
-     Дескриптор компонента находится в файле ./src/view/adminhtml/ui_component/brituy_simpleblog_post_listing.xml -->
-
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
-    <update handle="styles"/>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="brituy_simpleblog_post_listing"/>
+            <block class="Brituy\SimpleBlog\Block\Adminhtml\Post\Edit" name="brituy_simpleblog_post_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Brituy\SimpleBlog\Block\Adminhtml\Post\Edit\Tabs" name="brituy_simpleblog_post_tabs">
+                <block class="Brituy\SimpleBlog\Block\Adminhtml\Post\Edit\Tab\Post" name="brituy_simpleblog_post_edit_tab_post"/>
+                <!-- <block class="Brituy\SimpleBlog\Block\Adminhtml\Post\Edit\Tab\Product" name="brituy_simpleblog_post_edit_tab_product"/>
+                <block class="Brituy\SimpleBlog\Block\Adminhtml\Post\Edit\Tab\History" name="brituy_simpleblog_post_edit_tab_history"/> -->
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">post</argument>
+                    <argument name="block" xsi:type="string">brituy_simpleblog_post_edit_tab_post</argument>
+                </action>
+                <!-- <action method="addTab">
+                    <argument name="name" xsi:type="string">product</argument>
+                    <argument name="block" xsi:type="string">brituy_simpleblog_post_edit_tab_product</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">history</argument>
+                    <argument name="block" xsi:type="string">brituy_simpleblog_post_edit_tab_history</argument>
+                </action> -->
+            </block>
         </referenceContainer>
     </body>
 </page>
