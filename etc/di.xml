@@ -5,33 +5,36 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="brituy_simpleblog_post_listing_data_source" xsi:type="string">
-                	Brituy\SimpleBlog\Model\ResourceModel\Post\Grid\Collection
+                <item name="brituy_simpleblog_blog_listing_data_source" xsi:type="string">
+                	Brituy\SimpleBlog\Model\ResourceModel\Blog\Collection
                 </item>
-                <item name="brituy_simpleblog_authors_listing_data_source" xsi:type="string">
-                	Brituy\SimpleBlog\Model\ResourceModel\Authors\Grid\Collection
+                <item name="brituy_simpleblog_author_listing_data_source" xsi:type="string">
+                	Brituy\SimpleBlog\Model\ResourceModel\Authors\Collection
                 </item>
-                <item name="brituy_simpleblog_categories_listing_data_source" xsi:type="string">
-                	Brituy\SimpleBlog\Model\ResourceModel\Categories\Grid\Collection
+                <item name="brituy_simpleblog_category_listing_data_source" xsi:type="string">
+                	Brituy\SimpleBlog\Model\ResourceModel\Categories\Collection
                 </item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="Brituy\SimpleBlog\Model\ResourceModel\Post\Grid\Collection"
+    
+    <virtualType name="Brituy\SimpleBlog\Model\ResourceModel\Blog\Collection"
     		  type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">brituy_blog_main</argument>
-            <argument name="resourceModel" xsi:type="string">Brituy\SimpleBlog\Model\ResourceModel\Post</argument>
+            <argument name="resourceModel" xsi:type="string">Brituy\SimpleBlog\Model\ResourceModel\Blog</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Brituy\SimpleBlog\Model\ResourceModel\Authors\Grid\Collection"
+    
+    <virtualType name="Brituy\SimpleBlog\Model\ResourceModel\Authors\Collection"
     		  type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">brituy_blog_authors</argument>
             <argument name="resourceModel" xsi:type="string">Brituy\SimpleBlog\Model\ResourceModel\Authors</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Brituy\SimpleBlog\Model\ResourceModel\Categories\Grid\Collection"
+    
+    <virtualType name="Brituy\SimpleBlog\Model\ResourceModel\Categories\Collection"
     		  type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">brituy_blog_categories</argument>

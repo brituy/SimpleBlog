@@ -5,22 +5,22 @@ namespace Brituy\SimpleBlog\Controller\Index;
 class Index extends \Magento\Framework\App\Action\Action
 {
 	protected $_pageFactory;
-	protected $_postFactory;
-	
+	protected $_blogFactory;
+
 	public function __construct(
 		\Magento\Framework\App\Action\Context $context,
 		\Magento\Framework\View\Result\PageFactory $pageFactory,
-		\Brituy\SimpleBlog\Model\PostFactory $postFactory)
+		\Brituy\SimpleBlog\Model\BlogFactory $blogFactory)
 	{
 		$this->_pageFactory = $pageFactory;
-		$this->_postFactory = $postFactory;
+		$this->_blogFactory = $blogFactory;
 		return parent::__construct($context);
 	}
 
 	public function execute()
 	{
-		$post = $this->_postFactory->create();
-		$collection = $post->getCollection();
+		$blog = $this->_blogFactory->create();
+		$collection = $blog->getCollection();
 		foreach($collection as $item){
 			echo "<pre>";
 			  print_r($item->getData());

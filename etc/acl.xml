@@ -4,7 +4,9 @@
         <resources>
             <resource id="Magento_Backend::admin">
                 <resource id="Brituy_SimpleBlog::simpleblog" title="Brituy SimpleBlog" sortOrder="51">
-                    <resource id="Brituy_SimpleBlog::post" title="Manage Articles" sortOrder="10"/>
+                    <resource id="Brituy_SimpleBlog::article" title="Manage Articles" sortOrder="10"/>
+                    <resource id="Brituy_SimpleBlog::category" title="Manage Categories" sortOrder="20"/>
+                    <resource id="Brituy_SimpleBlog::author" title="Manage Authors" sortOrder="30"/>
                     <resource id="Brituy_SimpleBlog::blog_config" title="Configuration" sortOrder="99" />
                 </resource>
                 <resource id="Magento_Backend::stores">
