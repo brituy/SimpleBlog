@@ -25,7 +25,8 @@ class CategoriesOpt implements OptionSourceInterface
         $collection = $this->categoriesCollectionFactory->create();
 
         $categoriesOptions = [];
-        foreach ($collection as $item) {
+        foreach ($collection as $item) 
+        {
             $categoriesOptions[] = [
                 'value' => $item->getId(),
                 'label' => $item->getCategory(),
@@ -40,7 +41,8 @@ class CategoriesOpt implements OptionSourceInterface
     {
         $optionsArray = $this->toOptionArray();
         $options = [];
-        foreach ($optionsArray as $option) {
+        foreach ($optionsArray as $option) 
+        {
             $options[$option['value']] = $option['label'];
         }
         return $options;
@@ -51,9 +53,7 @@ class CategoriesOpt implements OptionSourceInterface
     public function getAvailableOptions()
     {
         $allOptions = $this->getOptions();
-        $newOptions = [
-            'none' => __('Please select')
-        ];
+        $newOptions = ['none'=>__('Please select')];
         return $newOptions + $allOptions;
     }
 
@@ -63,7 +63,9 @@ class CategoriesOpt implements OptionSourceInterface
     public function getOptionByValue($value)
     {
         $options = $this->getOptions();
-        if (array_key_exists($value, $options)) {
+        
+        if (array_key_exists($value, $options)) 
+        {
             return $options[$value];
         }
         return null;

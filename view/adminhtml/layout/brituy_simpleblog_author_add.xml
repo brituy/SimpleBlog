@@ -4,7 +4,8 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-		<block class="Brituy\SimpleBlog\Block\Adminhtml\Author\Edit" name="edit"/>
+        	<uiComponent name="blog_new_author_form"/>
+		<!--<block class="Brituy\SimpleBlog\Block\Adminhtml\Author\Edit" name="edit"/>-->
         </referenceContainer>
     </body>
 </page>

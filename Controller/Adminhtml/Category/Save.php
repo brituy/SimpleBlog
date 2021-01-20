@@ -7,6 +7,7 @@ use Magento\Backend\Model\Session;
 use Magento\Framework\Message\Error;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
+use Brituy\SimpleBlog\Model\Categories;
 use Brituy\SimpleBlog\Model\CategoriesFactory;
 
 class Save extends Action
@@ -38,7 +39,18 @@ class Save extends Action
         {
             $categoriesModel = $this->_categoriesFactory->create();
             $categoryid = $this->getRequest()->getParam('category_id');
-            if ($categoryid){ $categoriesModel->load($categoryid); }
+            if ($categoryid){ $categoriesModel->load($categoryid); } 		//category id is exist
+                else { $category = $this->getRequest()->getParam('category');	//Get new category name
+                	$dublicateCollection=$categoriesModel->getCategoryByName($category);
+                	if ($dublicateCollection)					//Check new category name
+                	{
+                	    $message = __("Category name: %1 already exist!",$category);
+                	    $this->messageManager->addErrorMessage($message);
+                	    $this->_redirect('*/*/edit', ['category' => $category, '_current' => true]);
+                	    return;
+                	}
+                     }
+            
             $categoriesModel->setData($data);
             
             try {

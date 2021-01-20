@@ -7,4 +7,9 @@ class Categories extends \Magento\Framework\Model\AbstractModel
     {
 	    $this->_init('Brituy\SimpleBlog\Model\ResourceModel\Categories');
     }
+    
+    public function getCategoryByName($category)
+    {
+        return $this->getCollection()->addFieldToFilter('category', $category)->getItems();
+    }
 }

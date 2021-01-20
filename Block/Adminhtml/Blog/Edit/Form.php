@@ -6,9 +6,11 @@ use Magento\Backend\Block\Template\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\Data\FormFactory;
 use Magento\Cms\Model\Wysiwyg\Config;
+use Brituy\SimpleBlog\Block\Adminhtml\Blog\Edit\Renderer\Category;
+use Brituy\SimpleBlog\Block\Adminhtml\Blog\Edit\Renderer\Author;
 use Brituy\SimpleBlog\Model\Source\Status;
-use Brituy\SimpleBlog\Model\Source\CategoriesOpt;
-use Brituy\SimpleBlog\Model\Source\AuthorsOpt;
+//use Brituy\SimpleBlog\Model\Source\CategoriesOpt;
+//use Brituy\SimpleBlog\Model\Source\AuthorsOpt;
 
 class Form extends Generic
 {
@@ -20,11 +22,11 @@ class Form extends Generic
 
     /** Categories source
      * @var \Brituy\SimpleBlog\Model\Source\CategoriesOpt  */
-    protected $categoriesOptSource;
+    //protected $categoriesOptSource;
     
     /** Authors source
      * @var \Brituy\SimpleBlog\Model\Source\AuthorsOpt  */
-    protected $authorsOptSource;
+    //protected $authorsOptSource;
 
     /** @param Context $context
      * @param Registry $registry
@@ -40,14 +42,14 @@ class Form extends Generic
         FormFactory $formFactory,
         Config $wysiwygConfig,
         Status $status,
-        CategoriesOpt $categoriesOptSource,
-        AuthorsOpt $authorsOptSource,
+        //CategoriesOpt $categoriesOptSource,
+        //AuthorsOpt $authorsOptSource,
         array $data = []
     ) {
         $this->_wysiwygConfig = $wysiwygConfig;
         $this->_status = $status;
-        $this->categoriesOptSource = $categoriesOptSource;
-        $this->authorsOptSource = $authorsOptSource;
+        //$this->categoriesOptSource = $categoriesOptSource;
+        //$this->authorsOptSource = $authorsOptSource;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -79,15 +81,22 @@ class Form extends Generic
         $fieldset->addField('visibility','select',
         	['name'=>'visibility','label'=>__('Visibility'),'options'=>$this->_status->toOptionArray()]);
 
-        $categoriesOptOptions = $this->categoriesOptSource->getAvailableOptions();
-        $fieldset->addField('category_id', 'select',
-        	['name'=>'category_id','label'=>__('Category'),'title'=>__("Category"),'required'=>true,'class'=>'validate-select',
-        	'options'=>$categoriesOptOptions,]);
-
-        $authorsOptOptions = $this->authorsOptSource->getAvailableOptions();
-        $fieldset->addField('author_id', 'select',
-        	['name'=>'author_id','label'=>__('Author'),'title'=>__("Author"),'required'=>true,'class'=>'validate-select',
-        	'options'=>$authorsOptOptions,]);
+        $fieldset->addField('category_id', Category::class, [
+            'name' => 'category_id',
+            'label' => __('Category'),
+            'title' => __('Category'),
+        ]);
+        
+        $fieldset->addField('author_id', Author::class, [
+            'name' => 'author_id',
+            'label' => __('Author'),
+            'title' => __('Author'),
+        ]);
+        
+        //$authorsOptOptions = $this->authorsOptSource->getAvailableOptions();
+        //$fieldset->addField('author_id', 'select',
+        //	['name'=>'author_id','label'=>__('Author'),'title'=>__("Author"),'required'=>true,'class'=>'validate-select',
+        //	'options'=>$authorsOptOptions,]);
 
         $fieldset->addField('blog_date','date',
         	['name'=>'blog_date','label'=>__('Blog Date'),'title'=>__('Blog Date'),'required'=>true,'date_format'=>'dd-MM-yyyy',]);
