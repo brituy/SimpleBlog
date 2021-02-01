@@ -10,15 +10,21 @@
             <label>Simple Blog</label>
             <tab>brituy</tab>
             <resource>Brituy_SimpleBlog::simpleblog_config</resource>
+            
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>General Configuration</label>
-                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                <field id="blog_enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Module Enable</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="display_text" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Display Text</label>
-                    <comment>This text will display on the frontend.</comment>
+                
+                <field id="menu_title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Menu Text</label>
+                    <comment>This text will display in menu on the frontend.</comment>
+                </field>
+                
+                <field id="base_route" translate="label" type="text" sortOrder="10" showInDefault="1">
+                    <label>Base URL</label>
                 </field>
             </group>
         </section>

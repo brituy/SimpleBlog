@@ -46,6 +46,7 @@ class Save extends Action
                 	{
                 	    $message = __("Category name: %1 already exist!",$category);
                 	    $this->messageManager->addErrorMessage($message);
+                	    
                 	    $this->_redirect('*/*/edit', ['category' => $category, '_current' => true]);
                 	    return;
                 	}

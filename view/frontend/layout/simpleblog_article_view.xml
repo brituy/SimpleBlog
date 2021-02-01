@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="page.main.title" remove="true"/>
     <referenceContainer name="content">
-        <block class="Brituy\SimpleBlog\Block\BlogList" name="blog.list" template="Brituy_SimpleBlog::index_list.phtml" />
+        <block class="Brituy\SimpleBlog\Block\ArticleView" name="article.view" template="Brituy_SimpleBlog::article_view.phtml" />
     </referenceContainer>
 </page>

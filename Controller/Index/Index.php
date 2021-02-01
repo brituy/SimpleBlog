@@ -1,32 +1,38 @@
 <?php
-// execute() method, we will write all of our controller logic and will return response for the request
 namespace Brituy\SimpleBlog\Controller\Index;
 
-class Index extends \Magento\Framework\App\Action\Action
+use Brituy\SimpleBlog\Model\Config;
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\View\Result\Page;
+use Magento\Framework\View\Result\PageFactory;
+
+class Index extends Action
 {
-	protected $_pageFactory;
-	protected $_blogFactory;
+    /** @var PageFactory */
+    protected $resultPageFactory;
 
-	public function __construct(
-		\Magento\Framework\App\Action\Context $context,
-		\Magento\Framework\View\Result\PageFactory $pageFactory,
-		\Brituy\SimpleBlog\Model\BlogFactory $blogFactory)
-	{
-		$this->_pageFactory = $pageFactory;
-		$this->_blogFactory = $blogFactory;
-		return parent::__construct($context);
-	}
+    protected $config;
 
-	public function execute()
-	{
-		$blog = $this->_blogFactory->create();
-		$collection = $blog->getCollection();
-		foreach($collection as $item){
-			echo "<pre>";
-			  print_r($item->getData());
-			echo "</pre>";
-		}
-		exit();
-		return $this->_pageFactory->create();
-	}
+    /** Index constructor.
+     * @param Context $context
+     * @param PageFactory $resultPageFactory */
+    public function __construct(
+        Context $context,
+        PageFactory $resultPageFactory,
+        Config $config
+    ) {
+        parent::__construct($context);
+        $this->resultPageFactory = $resultPageFactory;
+        $this->config = $config;
+    }
+
+    /** @return ResponseInterface|ResultInterface|Page */
+    public function execute()
+    {
+        return $this->resultPageFactory->create();
+    }
 }

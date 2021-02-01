@@ -51,6 +51,9 @@ class Form extends Generic
 
         $fieldset->addField('author_mail','editor',
         	['name'=>'author_mail','label'=>'E-Mail','title'=>__('E-Mail'),'required'=>true]);
+        	 
+        //$fieldset->addField('author_mail','text',
+	//	['name'=>'author_mail','label'=>'E-Mail','title'=>__('Email'),'required'=>true,'class'=>'validate-email']);
 
         $data = $model->getData();
         $form->setValues($data);

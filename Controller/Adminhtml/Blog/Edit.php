@@ -1,12 +1,15 @@
 <?php
 namespace Brituy\SimpleBlog\Controller\Adminhtml\Blog;
 
+use Magento\Backend\App\Action\Context;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Registry;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\Controller\Result\ForwardFactory;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultInterface;
+use Brituy\SimpleBlog\Model\BlogFactory;
 
 class Edit extends \Magento\Backend\App\Action
 {
@@ -22,11 +25,11 @@ class Edit extends \Magento\Backend\App\Action
      * @param \Magento\Framework\Registry $coreRegistry,
      */
     public function __construct(
-        \Magento\Backend\App\Action\Context $context,
+        Context $context,
         PageFactory $resultPageFactory,
         ForwardFactory $resultForwardFactory,
-        \Magento\Framework\Registry $coreRegistry,
-        \Brituy\SimpleBlog\Model\BlogFactory $blogFactory
+        Registry $coreRegistry,
+        BlogFactory $blogFactory
     ) {
         $this->coreRegistry = $coreRegistry;
         $this->_blogFactory = $blogFactory;

@@ -1,0 +1,38 @@
+<?php
+/** @var \Brituy\SimpleBlog\Block\ArticleView $block */
+$article = $block->getArticle();
+$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+$format = $block->getDateFormat() ?: \IntlDateFormatter::LONG;
+$recentArticles = $block->getRecentArticles();
+?>
+
+<div class="blog-detail-title">
+    <h1><?= $block->escapeHtml($article->getTitle());?></h1>
+    <ul class="blog-article-info">
+        <li>
+            <?= __('By ')?>
+            <a class="author-link" href="<?= $block->escapeUrl($article->getAuthorMail())?>">
+                <span class="author-name"><?= $block->escapeHtml($article->getAuthorName())?></span>
+            </a>
+        </li>
+        <li class="articl-date"><?= $block->escapeHtml($post->getArticleData(), $format) ?></li>
+    </ul>
+    <div class="blog-content">
+        <?= $block->filterOutputHtml($post->getContent()); ?>
+    </div>
+
+    <?php if ($countRelatedPosts): ?>
+        <strong><?= $block->escapeHtml(__('Related posts:'))?></strong>
+        <div class="article-grid">
+            <ol class="article-items">
+                <?php foreach ($recentArticles as $recentArticles):?>
+                    <li class="article-item">
+                        <a class="article-item-link" href="<?= $block->escapeUrl($recentArticles->getBlogId())?>">
+                            <span class="article-title"><?= $block->escapeHtml($recentArticles->getTitle())?></span>
+                        </a>
+                    </li>
+                <?php endforeach;?>
+            </ol>
+        </div>
+    <?php endif;?>
+</div>
