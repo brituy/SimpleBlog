@@ -43,7 +43,7 @@ class Router implements RouterInterface
             $request->setModuleName($baseUrl);
             $request->setControllerName('index');
             $request->setActionName('index');
-            $request->setAlias(Url::REWRITE_REQUEST_PATH_ALIAS, $baseUrl);
+            $request->setAlias(Url::REWRITE_REQUEST_PATH_ALIAS, $identifier);
 
             return $this->actionFactory->create(Forward::class);
         }
@@ -54,7 +54,7 @@ class Router implements RouterInterface
             $request->setControllerName('article');
             $request->setActionName('view');
             $request->setParam('blog_id', $identifierParts[1]);
-            $request->setAlias(Url::REWRITE_REQUEST_PATH_ALIAS, $baseUrl. '/' . $identifierParts[1]);
+            $request->setAlias(Url::REWRITE_REQUEST_PATH_ALIAS, '/' . $identifierParts[1]);
 
             return $this->actionFactory->create(Forward::class);
         }

@@ -1,8 +1,18 @@
 <?php
 namespace Brituy\SimpleBlog\Model;
 
-class Authors extends \Magento\Framework\Model\AbstractModel
+use Magento\Framework\Model\AbstractModel;
+
+class Authors extends AbstractModel
 {
+    //protected function __construct(Context $context,Registry $registry,UrlInterface $urlBuilder,
+    //					AbstractResource $resource = null,AbstractDb $resourceCollection = null,
+	//				array $data = [])
+    //{
+	//    $this->_urlBuilder = $urlBuilder;
+//    parent::__construct($context, $registry, $resource, $resourceCollection, $data);
+    //}
+    
     protected function _construct()
     {
 	    $this->_init('Brituy\SimpleBlog\Model\ResourceModel\Authors');

@@ -1,34 +1,38 @@
 <?php
-/** @var \Brituy\SimpleBlog\Block\ArticleView $block */
-$article = $block->getArticle();
-$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+/** @var \Brituy\SimpleBlog\Block\Article\View $block */
+/** $article = $block->getArticle(); */
 $format = $block->getDateFormat() ?: \IntlDateFormatter::LONG;
 $recentArticles = $block->getRecentArticles();
+$currentAuthor = $block->getAuthor();
 ?>
 
+<?php foreach ($block->getArticle() as $article): ?>
 <div class="blog-detail-title">
-    <h1><?= $block->escapeHtml($article->getTitle());?></h1>
+    <h1><?php echo $article->getTitle() ?></h1>
     <ul class="blog-article-info">
         <li>
-            <?= __('By ')?>
-            <a class="author-link" href="<?= $block->escapeUrl($article->getAuthorMail())?>">
-                <span class="author-name"><?= $block->escapeHtml($article->getAuthorName())?></span>
+            <?php echo __('By ') ?>
+            <?php foreach ($currentAuthor as $currentAuthor): ?>
+            <a class="author-link" href="<?php echo $currentAuthor->getData('author_mail') ?>">
+                <span class="author-name"><?php echo $currentAuthor->getData('author') ?></span>
             </a>
+            <?php endforeach; ?>
         </li>
-        <li class="articl-date"><?= $block->escapeHtml($post->getArticleData(), $format) ?></li>
+        <li class="article-date"><?php echo $block->formatDate($article->getBlogDate(), $format) ?></li>
     </ul>
     <div class="blog-content">
-        <?= $block->filterOutputHtml($post->getContent()); ?>
+        <?php echo $article->getContent(); ?>
     </div>
+    <?php endforeach; ?>
 
-    <?php if ($countRelatedPosts): ?>
-        <strong><?= $block->escapeHtml(__('Related posts:'))?></strong>
+    <?php if ($recentArticles): ?>
+        <strong><?php echo __('Related articles:') ?></strong>
         <div class="article-grid">
             <ol class="article-items">
                 <?php foreach ($recentArticles as $recentArticles):?>
                     <li class="article-item">
-                        <a class="article-item-link" href="<?= $block->escapeUrl($recentArticles->getBlogId())?>">
-                            <span class="article-title"><?= $block->escapeHtml($recentArticles->getTitle())?></span>
+                        <a class="article-item-link" href="<?php echo $recentArticles->getBlogId() ?>">
+                            <span class="article-title"><?php echo $recentArticles->getTitle() ?></span>
                         </a>
                     </li>
                 <?php endforeach;?>

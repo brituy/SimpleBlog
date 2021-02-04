@@ -1,19 +1,24 @@
-<?php /** @var $block \Brituy\SimpleBlog\Block\BlogList */ ?>
+<?php
+/** @var $block \Brituy\SimpleBlog\Block\BlogList */
+$format = $block->getDateFormat() ?: \IntlDateFormatter::LONG;
+?>
+
 <h1><?php echo __('Latest Blog Articles') ?></h1>
 <ul class="blog-articles-list">
     <?php /** @var $article \Brituy\SimpleBlog\Model\Blog */ ?>
     <?php foreach ($block->getArticles() as $article): ?>
         <li class="blog-articles-list-item">
             <h3 class="blog-articles-item-title">
-                <a href="<?php echo 'blog/' ?><?php echo $article->getBlogId() ?>"><?php echo $article->getTitle() ?></a>
+                <a href="<?php echo 'blog/'.$article->getBlogId() ?>"><?php echo $article->getTitle() ?></a>
             </h3>
 
             <div class="blog-articles-item-content">
-                <?php echo substr($article->getContent(), 0, 15) . '...' ?>
+                <?php echo substr($article->getContent(), 0, 15).'... '?>
+                <a href="<?php echo 'blog/'.$article->getBlogId()?>">read more</a>
             </div>
 
             <div class="blog-articles-item-meta">
-                <strong><?php echo __('Article date:') ?></strong> <?php echo $article->getBlogDate() ?>
+                <strong><?php echo __('Article date:') ?></strong> <?php echo $block->formatDate($article->getBlogDate(), $format) ?>
             </div>
         </li>
     <?php endforeach; ?>

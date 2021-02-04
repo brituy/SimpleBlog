@@ -56,6 +56,13 @@ class Blog extends AbstractModel implements BlogInterface, IdentityInterface
     	return $this->getData(self::BLOG_ID);
     }
     
+    /** Get category ID
+     ** @return int|null */
+    public function getCategoryId()
+    {
+    	return $this->getData(self::CATEGORY_ID);
+    }
+    
     /** Get Visibility
      ** @return bool|null */
     public function getVisibility()
@@ -102,6 +109,14 @@ class Blog extends AbstractModel implements BlogInterface, IdentityInterface
     public function setBlogId($blogid)
     {
         return $this->setData(self::BLOG_ID, $blogid);
+    }
+    
+    /** Set category ID
+     ** @param int $categoryid
+     ** @return int|null */
+    public function setCategoryId($categoryid)
+    {
+    	return $this->setData(self::CATEGORY_ID, $categoryid);
     }
     
     /** Set is visibility
