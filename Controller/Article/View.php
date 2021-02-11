@@ -20,11 +20,8 @@ class View extends Action
     /** Index constructor.
      * @param Context $context
      * @param PageFactory $resultPageFactory */
-    public function __construct(
-        Context $context,
-        PageFactory $resultPageFactory,
-        Config $config
-    ) {
+    public function __construct(Context $context,PageFactory $resultPageFactory,Config $config)
+    {
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
         $this->config = $config;
@@ -33,6 +30,14 @@ class View extends Action
     /** @return ResponseInterface|ResultInterface|Page */
     public function execute()
     {
-        return $this->resultPageFactory->create();
+        $blogid = $this->getRequest()->getParam('blog_id');
+        if ($blogid)
+        {
+        	$resultPage=$this->resultPageFactory->create();
+        	$resultPage->addHandle("blog_article_view_".$blogid);
+		//$this->_redirect('blog/'.$blogid);
+	}
+
+        return $resultPage;
     }
 }

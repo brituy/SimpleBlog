@@ -2,7 +2,6 @@
 /** @var \Brituy\SimpleBlog\Block\Article\View $block */
 /** $article = $block->getArticle(); */
 $format = $block->getDateFormat() ?: \IntlDateFormatter::LONG;
-$recentArticles = $block->getRecentArticles();
 $currentAuthor = $block->getAuthor();
 ?>
 
@@ -11,12 +10,15 @@ $currentAuthor = $block->getAuthor();
     <h1><?php echo $article->getTitle() ?></h1>
     <ul class="blog-article-info">
         <li>
-            <?php echo __('By ') ?>
-            <?php foreach ($currentAuthor as $currentAuthor): ?>
-            <a class="author-link" href="<?php echo $currentAuthor->getData('author_mail') ?>">
-                <span class="author-name"><?php echo $currentAuthor->getData('author') ?></span>
-            </a>
-            <?php endforeach; ?>
+            <div class="author-link">
+                <?php echo __('By ') ?>
+                <?php foreach ($currentAuthor as $currentAuthor): ?>
+                <a href="<?php echo $currentAuthor->getData('author_mail') ?>"
+                   title="<?php echo $currentAuthor->getData('author_mail') ?>">
+                    <span><?php echo $currentAuthor->getData('author') ?></span>
+                </a>
+                <?php endforeach; ?>
+            </div>
         </li>
         <li class="article-date"><?php echo $block->formatDate($article->getBlogDate(), $format) ?></li>
     </ul>
@@ -24,19 +26,5 @@ $currentAuthor = $block->getAuthor();
         <?php echo $article->getContent(); ?>
     </div>
     <?php endforeach; ?>
-
-    <?php if ($recentArticles): ?>
-        <strong><?php echo __('Related articles:') ?></strong>
-        <div class="article-grid">
-            <ol class="article-items">
-                <?php foreach ($recentArticles as $recentArticles):?>
-                    <li class="article-item">
-                        <a class="article-item-link" href="<?php echo $recentArticles->getBlogId() ?>">
-                            <span class="article-title"><?php echo $recentArticles->getTitle() ?></span>
-                        </a>
-                    </li>
-                <?php endforeach;?>
-            </ol>
-        </div>
-    <?php endif;?>
+    <p class="back-link"><a href="../" title="<?php echo __('Back to index') ?>"><?php echo __('Back to index') ?></a></p>
 </div>

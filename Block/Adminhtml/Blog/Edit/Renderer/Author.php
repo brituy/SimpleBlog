@@ -51,7 +51,7 @@ class Author extends Select
         $html = '<div class="admin__field-control admin__control-grouped">';
         $html .= '<div id="blog-author-select" class="admin__field" data-bind="scope:\'blogAuthor\'" data-index="index">';
         $html .= '<!-- ko foreach: elems() -->';
-        $html .= '<input name="blog[author_id]" data-bind="value: value" style="display: none"/>';
+        $html .= '<input name="author_id" data-bind="value: value" style="display: none"/>';
         $html .= '<!-- ko template: elementTmpl --><!-- /ko -->';
         $html .= '<!-- /ko -->';
         $html .= '</div>';

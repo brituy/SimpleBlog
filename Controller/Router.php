@@ -32,13 +32,48 @@ class Router implements RouterInterface
      * @return bool */
     public function match(RequestInterface $request)
     {
+        $baseUrl = $this->config->getBaseRoute();
         $identifier = trim($request->getPathInfo(), '/');
         $identifierParts = explode('/', $identifier);
-        $baseUrl = $this->config->getBaseRoute();
+        
+        if (!in_array('blog',$identifierParts)) { return false; }
 
-        if ($identifierParts[0] != 'blog') { return false; }
+        $reverseIdentifier = array_reverse($identifierParts);
+        
+        if (count($reverseIdentifier) > 2)
+        {
+            $dataid = array_shift($reverseIdentifier);
+            $action = array_shift($reverseIdentifier);
+            $controller = array_shift($reverseIdentifier);
+        }else{ $action='index'; }
+        
+        switch ($action)
+        {
+            case 'blog_id':
+                $controller = 'article';
+                $request->setParam('blog_id', $dataid);
+                $action = 'view';
+                break;
+            case 'category_id':
+                $controller = 'index';
+                $request->setParam('category_id', $dataid);
+                $action = 'index';
+                break;
+            default:
+                $controller='index';
+                $action = 'index';
+        }
 
-        if ($identifierParts[0] == 'blog' && !isset($identifierParts[1]))
+        $request->setModuleName($baseUrl)
+        	->setControllerName($controller)
+        	->setActionName($action)
+        	->setPathInfo($baseUrl . '/' . $controller . '/' . $action)
+        	->setAlias(Url::REWRITE_REQUEST_PATH_ALIAS, $baseUrl . '/' . $controller . '/' . $action);
+
+        return $this->actionFactory->create(Forward::class,['request' => $request]);
+
+
+        /**if ($identifierParts[0] == 'blog' && !isset($identifierParts[1]))
         {
             $request->setModuleName($baseUrl);
             $request->setControllerName('index');
@@ -47,8 +82,8 @@ class Router implements RouterInterface
 
             return $this->actionFactory->create(Forward::class);
         }
-        
-        if (isset($identifierParts[1]) && !empty($identifierParts[1])) 
+
+        if (isset($identifierParts[1]) && !empty($identifierParts[1]))
         {
             $request->setModuleName($baseUrl);
             $request->setControllerName('article');
@@ -57,6 +92,6 @@ class Router implements RouterInterface
             $request->setAlias(Url::REWRITE_REQUEST_PATH_ALIAS, '/' . $identifierParts[1]);
 
             return $this->actionFactory->create(Forward::class);
-        }
+        }**/
     }
 }

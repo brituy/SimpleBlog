@@ -1,7 +1,6 @@
 <?php
 namespace Brituy\SimpleBlog\Controller\Index;
 
-use Brituy\SimpleBlog\Model\Config;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
@@ -15,24 +14,27 @@ class Index extends Action
     /** @var PageFactory */
     protected $resultPageFactory;
 
-    protected $config;
-
     /** Index constructor.
      * @param Context $context
      * @param PageFactory $resultPageFactory */
-    public function __construct(
-        Context $context,
-        PageFactory $resultPageFactory,
-        Config $config
-    ) {
+    public function __construct(Context $context,PageFactory $resultPageFactory)
+    {
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
-        $this->config = $config;
     }
 
     /** @return ResponseInterface|ResultInterface|Page */
     public function execute()
     {
-        return $this->resultPageFactory->create();
+        $resultPage=$this->resultPageFactory->create();
+        
+        $categoryid = $this->getRequest()->getParam('category_id');
+        if ($categoryid)
+        {
+        	$resultPage->addHandle("blog_article_index_".$categoryid);
+		//$this->_redirect('blog/'.$blogid);
+	}
+	
+        return $resultPage;
     }
 }

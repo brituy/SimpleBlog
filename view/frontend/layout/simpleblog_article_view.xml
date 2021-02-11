@@ -1,7 +1,19 @@
 <?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <referenceContainer name="page.main.title" remove="true"/>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+<update handle="simpleblog_default"/>
+    
+<body>
     <referenceContainer name="content">
-        <block class="Brituy\SimpleBlog\Block\Article\View" name="article.view" template="Brituy_SimpleBlog::article_view.phtml" />
+        <block class="Brituy\SimpleBlog\Block\Article\View"
+        	name="article.view"
+        	template="Brituy_SimpleBlog::article_view.phtml"/>
     </referenceContainer>
+    <referenceContainer name="sidebar.additional">
+	<block class="Brituy\SimpleBlog\Block\Sidebar\Recent" name="sidebar.recent" template="Brituy_SimpleBlog::sidebar_recent.phtml"/>
+
+	<referenceBlock name="sidebar.categories" remove="true"/>
+    </referenceContainer>
+</body>
+    
 </page>

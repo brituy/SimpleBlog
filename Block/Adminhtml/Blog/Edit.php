@@ -1,6 +1,9 @@
 <?php
 namespace Brituy\SimpleBlog\Block\Adminhtml\Blog;
 
+use Magento\Backend\Block\Widget\Context;
+use Magento\Framework\Registry;
+
 /** Block for edit page */
 class Edit extends \Magento\Backend\Block\Widget\Form\Container 
 {
@@ -11,7 +14,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
     /** @param \Magento\Backend\Block\Widget\Context $context
         @param \Magento\Framework\Registry $registry
         @param array $data */
-    public function __construct(\Magento\Backend\Block\Widget\Context $context,\Magento\Framework\Registry $registry,array $data = [])
+    public function __construct(Context $context,Registry $registry,array $data = [])
     {
 	$this->_coreRegistry = $registry;
 	parent::__construct($context, $data);

@@ -1,0 +1,24 @@
+<?php
+/** sidebar categories template */
+?>
+
+<?php $blogCategories = $block->getCategories(); ?>
+
+    <?php if ($blogCategories): ?>
+        <p><strong><?php echo __('Blog categories:') ?></strong></p>
+        <div class="categories-grid">
+            <ul class="categories-items">
+                <?php foreach ($blogCategories as $blogCategories):?>
+                    <li class="categories-item">
+                        <?php $currentCategoryId = $blogCategories->getCategoryId(); ?>
+                        <a class="categories-item-link" href="<?php echo 'blog/category_id/'.$currentCategoryId ?>">
+                            <span class="categories-title">
+                                <?php $ArticlesCount = $block->getArticlesCount($currentCategoryId); ?>
+                                <?php echo $blogCategories->getCategory().' ('.$ArticlesCount.')' ?>
+                            </span>
+                        </a>
+                    </li>
+                <?php endforeach;?>
+            </ul>
+        </div>
+    <?php endif;?>

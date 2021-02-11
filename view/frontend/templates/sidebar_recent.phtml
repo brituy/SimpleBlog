@@ -1,0 +1,20 @@
+<?php
+/** recent article left navigation */
+?>
+
+<?php $recentArticles = $block->getRecentArticles(); ?>
+
+    <?php if ($recentArticles): ?>
+        <p><strong><?php echo __('Related articles:') ?></strong></p>
+        <div class="article-grid">
+            <ol class="article-items">
+                <?php foreach ($recentArticles as $recentArticles):?>
+                    <li class="article-item">
+                        <a class="article-item-link" href="<?php echo 'blog/blog_id/'.$recentArticles->getBlogId() ?>">
+                            <span class="article-title"><?php echo $recentArticles->getTitle() ?></span>
+                        </a>
+                    </li>
+                <?php endforeach;?>
+            </ol>
+        </div>
+    <?php endif;?>

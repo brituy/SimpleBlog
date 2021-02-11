@@ -1,5 +1,5 @@
 <?php
-namespace Brituy\SimpleBlog\Block\Article;
+namespace Brituy\SimpleBlog\Block\Sidebar;
 
 use Brituy\SimpleBlog\Model\Config;
 use Brituy\SimpleBlog\Model\Blog;
@@ -18,7 +18,7 @@ use Magento\Framework\View\Page\Config as PageConfig;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\AbstractBlock;
 
-class View extends Template implements IdentityInterface
+class Recent extends Template implements IdentityInterface
 {
     const NUMBER_RELATED_POSTS = 10;
 
@@ -62,14 +62,17 @@ class View extends Template implements IdentityInterface
     {
         $currentArticle = $this->getArticle();
         $currentCategory = $this->getArticle()->getColumnValues('category_id');
-        $recentArticles = $this->_blogCollectionFactory->create();
-        $recentArticles -> addFieldToFilter('visibility', Blog::STATUS_VISIBLE);
-        $recentArticles -> addFieldToFilter('blog_id', ['neq' => $currentArticle->getColumnValues('blog_id')]);
-        $recentArticles -> addFieldToFilter('category_id', $currentCategory)
-            ->addOrder(BlogInterface::BLOG_DATE, BlogCollection::SORT_ORDER_DESC)
-            ->setPageSize(self::NUMBER_RELATED_POSTS);
-
-        return $recentArticles;
+        
+        if ($currentCategory)
+        {
+            $recentArticles = $this->_blogCollectionFactory->create();
+            $recentArticles -> addFieldToFilter('visibility', Blog::STATUS_VISIBLE);
+            $recentArticles -> addFieldToFilter('blog_id', ['neq' => $currentArticle->getColumnValues('blog_id')]);
+            $recentArticles -> addFieldToFilter('category_id', $currentCategory)
+				->addOrder(BlogInterface::BLOG_DATE, BlogCollection::SORT_ORDER_DESC)
+				->setPageSize(self::NUMBER_RELATED_POSTS);
+            return $recentArticles;
+        } else { return null; }
     }
     
     public function getAuthor()

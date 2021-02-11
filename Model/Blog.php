@@ -29,7 +29,7 @@ class Blog extends AbstractModel implements BlogInterface, IdentityInterface
     /** @var \Magento\Framework\UrlInterface */
     protected $_urlBuilder;
     
-    protected function __construct(Context $context,Registry $registry,UrlInterface $urlBuilder,
+    public function __construct(Context $context,Registry $registry,UrlInterface $urlBuilder,
     					AbstractResource $resource = null,AbstractDb $resourceCollection = null,
 					array $data = [])
     {

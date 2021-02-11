@@ -51,7 +51,7 @@ class Category extends Select
         $html = '<div class="admin__field-control admin__control-grouped">';
         $html .= '<div id="blog-category-select" class="admin__field" data-bind="scope:\'blogCategory\'" data-index="index">';
         $html .= '<!-- ko foreach: elems() -->';
-        $html .= '<input name="blog[category_id]" data-bind="value: value" style="display: none"/>';
+        $html .= '<input name="category_id" data-bind="value: value" style="display: none"/>';
         $html .= '<!-- ko template: elementTmpl --><!-- /ko -->';
         $html .= '<!-- /ko -->';
         $html .= '</div>';

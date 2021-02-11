@@ -34,12 +34,24 @@ class BlogList extends Template implements IdentityInterface
         // that has been filtered differently!
         if (!$this->hasData('articles'))
         {
-            $articles = $this->_blogCollectionFactory
-                ->create()
-                ->addFilter('visibility', 1)
-                ->addOrder(BlogInterface::BLOG_DATE, BlogCollection::SORT_ORDER_DESC);
+            $categoryid = $this->getRequest()->getParam('category_id');
+            if ($categoryid)
+            {
+                $articles = $this->_blogCollectionFactory
+				->create()
+				->addFilter('visibility', 1)
+				->addFilter('category_id', $categoryid)
+				->addOrder(BlogInterface::BLOG_DATE, BlogCollection::SORT_ORDER_DESC);
+	    }else{
+	        $articles = $this->_blogCollectionFactory
+				->create()
+				->addFilter('visibility', 1)
+				->addOrder(BlogInterface::BLOG_DATE, BlogCollection::SORT_ORDER_DESC);
+	    }
+            
             $this->setData('articles', $articles);
         }
+        
         return $this->getData('articles');
     }
 

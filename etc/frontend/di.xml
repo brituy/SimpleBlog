@@ -7,7 +7,7 @@
                     <item name="class" xsi:type="string">Brituy\SimpleBlog\Controller\Router</item>
                     <item name="disable" xsi:type="boolean">false</item>
                     <!-- 10-Robots, 20-UrlRewrite, 30-Standart module/controller/action, 60 CMS pages, 100-Default -->
-                    <item name="sortOrder" xsi:type="string">30</item>
+                    <item name="sortOrder" xsi:type="string">70</item>
                 </item>
             </argument>
         </arguments>

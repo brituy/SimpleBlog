@@ -9,12 +9,12 @@ $format = $block->getDateFormat() ?: \IntlDateFormatter::LONG;
     <?php foreach ($block->getArticles() as $article): ?>
         <li class="blog-articles-list-item">
             <h3 class="blog-articles-item-title">
-                <a href="<?php echo 'blog/'.$article->getBlogId() ?>"><?php echo $article->getTitle() ?></a>
+                <a href="<?php echo 'blog/blog_id/'.$article->getBlogId() ?>"><?php echo $article->getTitle() ?></a>
             </h3>
 
             <div class="blog-articles-item-content">
-                <?php echo substr($article->getContent(), 0, 15).'... '?>
-                <a href="<?php echo 'blog/'.$article->getBlogId()?>">read more</a>
+                <?php echo substr($article->getContent(), 0, 150).'... '?>
+                <a href="<?php echo 'blog/blog_id/'.$article->getBlogId()?>">read more</a>
             </div>
 
             <div class="blog-articles-item-meta">
