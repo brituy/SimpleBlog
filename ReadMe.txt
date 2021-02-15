@@ -8,3 +8,5 @@ Magento 2.4 Simple Blog module.
 09.02.2021	Added sidebar to Frontend pages.
 10.02.2021	Backend article save bugfix.
 11.02.2021	Frontend sidebar rebuild.
+15.02.2021	Added BreadCrumbs menu to frontend.
+		Added frontend pagination.

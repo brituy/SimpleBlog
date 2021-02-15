@@ -35,6 +35,13 @@ class Categories extends Template implements IdentityInterface
 
     	return $categoriesList;
     }
+    
+    public function getSelectedCategory()
+    {
+        $selCategory = $this->getRequest()->getParam('category_id');
+        
+        return $selCategory;
+    }
 
     public function getArticlesCount($currentCategory)
     {

@@ -2,7 +2,10 @@
 /** sidebar categories template */
 ?>
 
-<?php $blogCategories = $block->getCategories(); ?>
+<?php
+    $blogCategories = $block->getCategories();
+    $selectedCategory = $block->getSelectedCategory();
+?>
 
     <?php if ($blogCategories): ?>
         <p><strong><?php echo __('Blog categories:') ?></strong></p>
@@ -11,12 +14,21 @@
                 <?php foreach ($blogCategories as $blogCategories):?>
                     <li class="categories-item">
                         <?php $currentCategoryId = $blogCategories->getCategoryId(); ?>
-                        <a class="categories-item-link" href="<?php echo 'blog/category_id/'.$currentCategoryId ?>">
-                            <span class="categories-title">
-                                <?php $ArticlesCount = $block->getArticlesCount($currentCategoryId); ?>
-                                <?php echo $blogCategories->getCategory().' ('.$ArticlesCount.')' ?>
-                            </span>
-                        </a>
+                        <?php if ($currentCategoryId==$selectedCategory): ?>
+                            <a class="categories-item-link-sel" href="<?php echo 'blog/category_id/'.$currentCategoryId ?>">
+                                <span class="categories-title">
+                                    <?php $ArticlesCount = $block->getArticlesCount($currentCategoryId); ?>
+                                    <strong><?php echo $blogCategories->getCategory().' ('.$ArticlesCount.')' ?></strong>
+                                </span>
+                            </a>
+                        <?php else: ?>
+                            <a class="categories-item-link" href="<?php echo 'blog/category_id/'.$currentCategoryId ?>">
+                                <span class="categories-title">
+                                    <?php $ArticlesCount = $block->getArticlesCount($currentCategoryId); ?>
+                                    <?php echo $blogCategories->getCategory().' ('.$ArticlesCount.')' ?>
+                                </span>
+                            </a>
+                        <?php endif; ?>
                     </li>
                 <?php endforeach;?>
             </ul>

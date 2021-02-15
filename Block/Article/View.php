@@ -22,11 +22,9 @@ class View extends Template implements IdentityInterface
 {
     const NUMBER_RELATED_POSTS = 10;
 
-    /** @var \Brituy\SimpleBlog\Model\ResourceModel\Blog\CollectionFactory */
     protected $_blogCollectionFactory;
-    
-    /** @var \Brituy\SimpleBlog\Model\ResourceModel\Author\CollectionFactory */
     protected $_authorCollectionFactory;
+    protected $config;
 
     /** Construct
      * @param \Magento\Framework\View\Element\Template\Context $context
@@ -34,9 +32,10 @@ class View extends Template implements IdentityInterface
      * @param array $data */
     public function __construct(Context $context,BlogCollectionFactory $blogCollectionFactory,
     				AuthorsCollectionFactory $authorCollectionFactory,
-    				array $data=[])
+    				Config $config,array $data=[])
     {
         parent::__construct($context, $data);
+        $this->config = $config;
         $this->_blogCollectionFactory = $blogCollectionFactory;
         $this->_authorCollectionFactory = $authorCollectionFactory;
     }
@@ -96,11 +95,17 @@ class View extends Template implements IdentityInterface
      */
     protected function _prepareLayout()
     {
-        if ($blog = $this->getBlog()) {
-            $this->addBreadcrumbs();
-            $this->pageConfig->setMetaTitle($blog->getMetaTitle());
-            $this->pageConfig->getTitle()->set($blog->getMetaTitle() ?: $blog->getTitle());
+        $blogTitle = $this->config->getMenuTitle();
+        $breadcrumbsBlock = $this->getLayout()->getBlock('breadcrumbs');
+
+        if ($breadcrumbsBlock)
+        {
+            $breadcrumbsBlock->addCrumb('home',['label'=>__('Home'),
+            					'title'=>__('Go to Home Page'),
+            					'link'=>$this->_storeManager->getStore()->getBaseUrl()]);
+            $breadcrumbsBlock->addCrumb('blog',['label'=>__($blogTitle),'title'=>__($blogTitle),'link'=>null,]);
         }
+
         return $this;
     }
 

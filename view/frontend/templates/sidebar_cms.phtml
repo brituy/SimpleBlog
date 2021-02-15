@@ -1,0 +1,20 @@
+<?php
+/** newest article cms left navigation */
+?>
+
+<?php $newestArticles = $block->getNewArticles(); ?>
+
+    <?php if ($newestArticles): ?>
+        <p><strong><?php echo __('Newest articles:') ?></strong></p>
+        <div class="article-grid">
+            <ol class="article-items">
+                <?php foreach ($newestArticles as $newestArticles):?>
+                    <li class="article-item">
+                        <a class="article-item-link" href="<?php echo 'blog/blog_id/'.$newestArticles->getBlogId() ?>">
+                            <span class="article-title"><?php echo $newestArticles->getTitle() ?></span>
+                        </a>
+                    </li>
+                <?php endforeach;?>
+            </ol>
+        </div>
+    <?php endif;?>

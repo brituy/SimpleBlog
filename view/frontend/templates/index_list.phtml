@@ -1,8 +1,16 @@
 <?php
 /** @var $block \Brituy\SimpleBlog\Block\BlogList */
 $format = $block->getDateFormat() ?: \IntlDateFormatter::LONG;
+$articles = $block->getArticles();
 ?>
 
+<?php if (!$articles->count()): ?>
+    <div class="message info empty">
+        <div>
+            <?php echo __('We can\'t find posts matching the selection.') ?>
+        </div>
+    </div>
+<?php else: ?>
 <h1><?php echo __('Latest Blog Articles') ?></h1>
 <ul class="blog-articles-list">
     <?php /** @var $article \Brituy\SimpleBlog\Model\Blog */ ?>
@@ -13,7 +21,7 @@ $format = $block->getDateFormat() ?: \IntlDateFormatter::LONG;
             </h3>
 
             <div class="blog-articles-item-content">
-                <?php echo substr($article->getContent(), 0, 150).'... '?>
+                <?php echo substr($article->getContent(), 0, 160).' ... '?>
                 <a href="<?php echo 'blog/blog_id/'.$article->getBlogId()?>">read more</a>
             </div>
 
@@ -23,3 +31,7 @@ $format = $block->getDateFormat() ?: \IntlDateFormatter::LONG;
         </li>
     <?php endforeach; ?>
 </ul>
+<?php if ($block->getPagerHtml()): ?>
+        <div class="toolbar-bottom"><?php echo $block->getPagerHtml(); ?></div>
+<?php endif ?>
+<?php endif; ?>

@@ -1,11 +1,14 @@
 <?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
 
 <update handle="simpleblog_default"/>
 
 <body>
     <referenceContainer name="content">
         <block class="Brituy\SimpleBlog\Block\BlogList" name="blog.list" template="Brituy_SimpleBlog::index_list.phtml" />
+    </referenceContainer>
+    <referenceContainer name="sidebar.additional">
+	<block class="Brituy\SimpleBlog\Block\Sidebar\Categories" name="sidebar.categories" template="Brituy_SimpleBlog::sidebar_categories.phtml"/>
     </referenceContainer>
 </body>
     

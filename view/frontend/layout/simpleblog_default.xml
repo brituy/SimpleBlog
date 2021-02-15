@@ -1,13 +1,11 @@
 <?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
 
 <head>
       <css src="Brituy_SimpleBlog::css/style.css" />
 </head>
 <body>   
     <referenceContainer name="sidebar.additional">
-	<block class="Brituy\SimpleBlog\Block\Sidebar\Categories" name="sidebar.categories" template="Brituy_SimpleBlog::sidebar_categories.phtml">
-	</block>
 	<referenceBlock name="catalog.compare.sidebar" remove="true"/>
 	<referenceBlock name="wishlist_sidebar" remove="true"/>
     </referenceContainer>
