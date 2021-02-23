@@ -8,6 +8,10 @@ use Magento\Backend\Model\View\Result\ForwardFactory;
 
 class NewAction extends \Magento\Backend\App\Action
 {
+    /** Authorization level of a basic admin session
+     ** @see _isAllowed() */
+    const ADMIN_RESOURCE = 'Brituy_SimpleBlog::author_save';
+    
     public $resultForwardFactory;
     
     public function __construct(Context $context,PageFactory $resultPageFactory,ForwardFactory $resultForwardFactory)

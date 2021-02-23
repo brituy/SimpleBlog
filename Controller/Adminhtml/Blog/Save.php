@@ -61,4 +61,9 @@ class Save extends \Magento\Backend\App\Action
             $this->_redirect('*/*/edit', ['blog_id' => $blogid]);
         }
     }
+    
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed('Brituy_SimpleBlog::blog_save');
+    }
 }

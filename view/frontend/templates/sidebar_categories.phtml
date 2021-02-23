@@ -5,6 +5,7 @@
 <?php
     $blogCategories = $block->getCategories();
     $selectedCategory = $block->getSelectedCategory();
+    $configUrl = $block->getBaseUrlConfig();
 ?>
 
     <?php if ($blogCategories): ?>
@@ -15,14 +16,14 @@
                     <li class="categories-item">
                         <?php $currentCategoryId = $blogCategories->getCategoryId(); ?>
                         <?php if ($currentCategoryId==$selectedCategory): ?>
-                            <a class="categories-item-link-sel" href="<?php echo 'blog/category_id/'.$currentCategoryId ?>">
+                            <a class="categories-item-link-sel" href="<?php echo $block->getUrl('simpleblog',['category_id'=>$currentCategoryId]) ?>">
                                 <span class="categories-title">
                                     <?php $ArticlesCount = $block->getArticlesCount($currentCategoryId); ?>
                                     <strong><?php echo $blogCategories->getCategory().' ('.$ArticlesCount.')' ?></strong>
                                 </span>
                             </a>
                         <?php else: ?>
-                            <a class="categories-item-link" href="<?php echo 'blog/category_id/'.$currentCategoryId ?>">
+                            <a class="categories-item-link" href="<?php echo $block->getUrl('simpleblog',['category_id'=>$currentCategoryId]) ?>">
                                 <span class="categories-title">
                                     <?php $ArticlesCount = $block->getArticlesCount($currentCategoryId); ?>
                                     <?php echo $blogCategories->getCategory().' ('.$ArticlesCount.')' ?>

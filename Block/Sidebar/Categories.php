@@ -16,17 +16,24 @@ class Categories extends Template implements IdentityInterface
 {
     protected $_categoriesCollection;
     protected $_blogCollectionFactory;
+    protected $config;
 
     /** Construct
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Brituy\SimpleBlog\Model\ResourceModel\Blog\CollectionFactory $blogCollectionFactory,
      * @param array $data */
     public function __construct(Context $context, BlogCollectionFactory $blogCollectionFactory,
-    					CategoriesCollectionFactory $categoriesCollection,array $data=[])
+    					CategoriesCollectionFactory $categoriesCollection,Config $config,array $data=[])
     {
         parent::__construct($context, $data);
+        $this->config = $config;
         $this->_blogCollectionFactory = $blogCollectionFactory;
         $this->_categoriesCollection = $categoriesCollection;
+    }
+    
+    public function getBaseUrlConfig()
+    {
+            return $this->config->getBaseRoute();
     }
 
     public function getCategories()

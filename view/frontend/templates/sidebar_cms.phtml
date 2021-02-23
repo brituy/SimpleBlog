@@ -1,5 +1,6 @@
 <?php
 /** newest article cms left navigation */
+$configUrl = $block->getBaseUrlConfig();
 ?>
 
 <?php $newestArticles = $block->getNewArticles(); ?>
@@ -10,7 +11,7 @@
             <ol class="article-items">
                 <?php foreach ($newestArticles as $newestArticles):?>
                     <li class="article-item">
-                        <a class="article-item-link" href="<?php echo 'blog/blog_id/'.$newestArticles->getBlogId() ?>">
+                        <a class="article-item-link" href="<?php echo $block->getUrl('simpleblog',['blog_id'=>$newestArticles->getBlogId()]) ?>">
                             <span class="article-title"><?php echo $newestArticles->getTitle() ?></span>
                         </a>
                     </li>

@@ -8,7 +8,10 @@ use Brituy\SimpleBlog\Model\AuthorsFactory;
 
 class InlineEdit extends Action
 {
-
+    /** Authorization level of a basic admin session
+     ** @see _isAllowed() */
+    const ADMIN_RESOURCE = 'Brituy_SimpleBlog::author_save';
+    
     protected $jsonFactory;
     protected $_authorsFactory;
 

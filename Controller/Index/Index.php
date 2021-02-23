@@ -32,7 +32,6 @@ class Index extends Action
         if ($categoryid)
         {
         	$resultPage->addHandle("blog_article_index_".$categoryid);
-		//$this->_redirect('blog/'.$blogid);
 	}
 	
         return $resultPage;

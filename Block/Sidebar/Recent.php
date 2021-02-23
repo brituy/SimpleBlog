@@ -27,6 +27,7 @@ class Recent extends Template implements IdentityInterface
     
     /** @var \Brituy\SimpleBlog\Model\ResourceModel\Author\CollectionFactory */
     protected $_authorCollectionFactory;
+    protected $config;
 
     /** Construct
      * @param \Magento\Framework\View\Element\Template\Context $context
@@ -34,11 +35,17 @@ class Recent extends Template implements IdentityInterface
      * @param array $data */
     public function __construct(Context $context,BlogCollectionFactory $blogCollectionFactory,
     				AuthorsCollectionFactory $authorCollectionFactory,
-    				array $data=[])
+    				Config $config,array $data=[])
     {
         parent::__construct($context, $data);
+        $this->config = $config;
         $this->_blogCollectionFactory = $blogCollectionFactory;
         $this->_authorCollectionFactory = $authorCollectionFactory;
+    }
+    
+    public function getBaseUrlConfig()
+    {
+            return $this->config->getBaseRoute();
     }
 
     /** @return Article|null */

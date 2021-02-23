@@ -38,4 +38,9 @@ class Delete extends Action
 		}
 		$this->_redirect('*/*');
 	}
+	
+	protected function _isAllowed()
+	{
+		return $this->_authorization->isAllowed('Brituy_SimpleBlog::blog_delete');
+	}
 }

@@ -30,12 +30,12 @@ class View extends Action
     /** @return ResponseInterface|ResultInterface|Page */
     public function execute()
     {
+        $resultPage=$this->resultPageFactory->create();
+        
         $blogid = $this->getRequest()->getParam('blog_id');
         if ($blogid)
         {
-        	$resultPage=$this->resultPageFactory->create();
         	$resultPage->addHandle("blog_article_view_".$blogid);
-		//$this->_redirect('blog/'.$blogid);
 	}
 
         return $resultPage;

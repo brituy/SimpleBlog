@@ -12,6 +12,10 @@ use Brituy\SimpleBlog\Model\AuthorsFactory;
 
 class Save extends Action
 {
+    /** Authorization level of a basic admin session
+     ** @see _isAllowed() */
+    const ADMIN_RESOURCE = 'Brituy_SimpleBlog::author_save';
+    
     protected $_coreRegistry;
     protected $_resultPageFactory;
     protected $_authorsFactory;

@@ -1,5 +1,6 @@
 <?php
 /** recent article left navigation */
+$configUrl = $block->getBaseUrlConfig();
 ?>
 
 <?php $recentArticles = $block->getRecentArticles(); ?>
@@ -10,7 +11,7 @@
             <ol class="article-items">
                 <?php foreach ($recentArticles as $recentArticles):?>
                     <li class="article-item">
-                        <a class="article-item-link" href="<?php echo 'blog/blog_id/'.$recentArticles->getBlogId() ?>">
+                        <a class="article-item-link" href="<?php echo $block->getUrl('simpleblog',['blog_id'=>$recentArticles->getBlogId()]) ?>">
                             <span class="article-title"><?php echo $recentArticles->getTitle() ?></span>
                         </a>
                     </li>

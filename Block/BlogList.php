@@ -6,6 +6,7 @@ use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\View\Element\Template\Context;
 use Brituy\SimpleBlog\Api\Data\BlogInterface;
 use Brituy\SimpleBlog\Model\Config;
+use Brituy\SimpleBlog\Model\Blog;
 use Brituy\SimpleBlog\Model\ResourceModel\Blog\Collection as BlogCollection;
 use Brituy\SimpleBlog\Model\ResourceModel\Blog\CollectionFactory as BlogCollectionFactory;
 use Brituy\SimpleBlog\Model\ResourceModel\Categories\Collection as CategoriesCollection;
@@ -14,7 +15,7 @@ use Brituy\SimpleBlog\Model\ResourceModel\Categories\CollectionFactory as Catego
 class BlogList extends Template implements IdentityInterface
 {
     /** @var \Brituy\SimpleBlog\Model\ResourceModel\Blog\CollectionFactory */
-    protected $_blogCollectionFactory;
+    protected $blogCollectionFactory;
     protected $config;
 
     /** Construct
@@ -27,8 +28,13 @@ class BlogList extends Template implements IdentityInterface
     {
         parent::__construct($context, $data);
         $this->config = $config;
-        $this->_blogCollectionFactory = $blogCollectionFactory;
+        $this->blogCollectionFactory = $blogCollectionFactory;
         $this->_categoriesCollectionFactory = $categoriesCollectionFactory;
+    }
+
+    public function getBaseUrlConfig()
+    {
+            return $this->config->getBaseRoute();
     }
 
     /**
@@ -36,25 +42,33 @@ class BlogList extends Template implements IdentityInterface
      */
     public function getArticles()
     {
-        // Check if articles has already been defined
-        // makes our block nice and re-usable! We could
-        // pass the 'articles' data to this block, with a collection
-        // that has been filtered differently!
+        //get values of current page
+        $page=($this->getRequest()->getParam('p'))? $this->getRequest()->getParam('p') : 1;
+        //get values of current limit
+        $pageSize=($this->getRequest()->getParam('limit'))? $this->getRequest()->getParam('limit') : 1;
+        //get value of current filter
+        $categoryid = $this->getRequest()->getParam('category_id');
+
+        // Check if articles has already been defined makes our block nice and re-usable! We could
+        // pass the 'articles' data to this block, with a collection that has been filtered differently!
         if (!$this->hasData('articles'))
         {
-            $categoryid = $this->getRequest()->getParam('category_id');
             if ($categoryid)
             {
-                $articles = $this->_blogCollectionFactory
+                $articles = $this->blogCollectionFactory
 				->create()
 				->addFilter('visibility', 1)
 				->addFilter('category_id', $categoryid)
-				->addOrder(BlogInterface::BLOG_DATE, BlogCollection::SORT_ORDER_DESC);
+				->addOrder(BlogInterface::BLOG_DATE, BlogCollection::SORT_ORDER_DESC)
+				->setPageSize($pageSize)
+				->setCurPage($page);
 	    }else{
-	        $articles = $this->_blogCollectionFactory
+	        $articles = $this->blogCollectionFactory
 				->create()
 				->addFilter('visibility', 1)
-				->addOrder(BlogInterface::BLOG_DATE, BlogCollection::SORT_ORDER_DESC);
+				->addOrder(BlogInterface::BLOG_DATE, BlogCollection::SORT_ORDER_DESC)
+				->setPageSize($pageSize)
+				->setCurPage($page);
 	    }
 
             $this->setData('articles', $articles);
@@ -96,10 +110,11 @@ class BlogList extends Template implements IdentityInterface
 
         if ($this->getArticles())
         {
-            $pager = $this->getLayout()->createBlock('Magento\Theme\Block\Html\Pager','custom.history.pager')
+            $pager = $this->getLayout()->createBlock('Magento\Theme\Block\Html\Pager','custom.blog.pager')
  				                        ->setAvailableLimit([5 => 5, 10 => 10, 15 => 15, 20 => 20])
  				                        ->setShowPerPage(true)
  				                        ->setCollection($this->getArticles());
+
             $this->setChild('pager', $pager);
             $this->getArticles()->load();
         }

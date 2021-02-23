@@ -9,6 +9,10 @@ use Brituy\SimpleBlog\Model\AuthorsFactory;
 
 class Delete extends Action
 {
+	/** Authorization level of a basic admin session
+	* @see _isAllowed() */
+	const ADMIN_RESOURCE = 'Brituy_SimpleBlog::author_delete';
+	
 	protected $_resultPageFactory;
 	protected $_resultPage;
 	protected $_authorsFactory;

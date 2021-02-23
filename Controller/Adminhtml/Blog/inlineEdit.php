@@ -8,7 +8,6 @@ use Brituy\SimpleBlog\Model\BlogFactory;
 
 class InlineEdit extends Action
 {
-
     protected $jsonFactory;
     protected $_blogFactory;
 
@@ -53,5 +52,10 @@ class InlineEdit extends Action
         }
 
         return $resultJson->setData(['messages' => $messages,'error' => $error]);
+    }
+    
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed('Brituy_SimpleBlog::blog_save');
     }
 }

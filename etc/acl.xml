@@ -3,16 +3,26 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Brituy_SimpleBlog::simpleblog" title="Brituy SimpleBlog" sortOrder="51">
-                    <resource id="Brituy_SimpleBlog::article" title="Manage Articles" sortOrder="10"/>
-                    <resource id="Brituy_SimpleBlog::category" title="Manage Categories" sortOrder="20"/>
-                    <resource id="Brituy_SimpleBlog::author" title="Manage Authors" sortOrder="30"/>
-                    <resource id="Brituy_SimpleBlog::blog_config" title="Configuration" sortOrder="99" />
+                <resource id="Magento_Backend::content">
+                    <resource id="Brituy_SimpleBlog::simpleblog" title="Brituy SimpleBlog" sortOrder="51">
+                        <resource id="Brituy_SimpleBlog::author" title="SimpleBlog Manage Authors" translate="title" sortOrder="99">
+                            <resource id="Brituy_SimpleBlog::author_save" title="Edit And Save Author" sortOrder="10" />
+                            <resource id="Brituy_SimpleBlog::author_delete" title="Delete Author" sortOrder="20" />
+                        </resource>
+                        <resource id="Brituy_SimpleBlog::category" title="SimpleBlog Manage Categories" translate="title" sortOrder="101">
+                            <resource id="Brituy_SimpleBlog::category_save" title="Edit And Save Category" sortOrder="10" />
+                            <resource id="Brituy_SimpleBlog::category_delete" title="Delete Category" sortOrder="20" />
+                        </resource>
+                        <resource id="Brituy_SimpleBlog::article" title="SimpleBlog Manage Articles" translate="title" sortOrder="102">
+                            <resource id="Brituy_SimpleBlog::blog_save" title="Edit And Save Articles" sortOrder="10" />
+                            <resource id="Brituy_SimpleBlog::blog_delete" title="Delete Articles" sortOrder="20" />
+                        </resource>
+                    </resource>
                 </resource>
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="Brituy_SimpleBlog::simpleblog_config" title="Simple Blog"/>
+                            <resource id="Brituy_SimpleBlog::simpleblog_config" title="Blog Management" translate="title" />
                         </resource>
                     </resource>
                 </resource>

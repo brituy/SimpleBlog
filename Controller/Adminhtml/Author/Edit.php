@@ -10,6 +10,10 @@ use Magento\Framework\Controller\ResultInterface;
 
 class Edit extends \Magento\Backend\App\Action
 {
+    /** Authorization level of a basic admin session
+     ** @see _isAllowed() */
+    const ADMIN_RESOURCE = 'Brituy_SimpleBlog::author_save';
+    
     private $coreRegistry;
 
     public $resultPageFactory;

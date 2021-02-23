@@ -12,6 +12,10 @@ use Brituy\SimpleBlog\Model\CategoriesFactory;
 
 class Save extends Action
 {
+    /** Authorization level of a basic admin session
+     ** @see _isAllowed() */
+    const ADMIN_RESOURCE = 'Brituy_SimpleBlog::category_save';
+    
     protected $_coreRegistry;
     protected $_resultPageFactory;
     protected $_categoriesFactory;

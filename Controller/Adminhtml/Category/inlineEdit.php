@@ -8,7 +8,10 @@ use Brituy\SimpleBlog\Model\CategoriesFactory;
 
 class InlineEdit extends Action
 {
-
+    /** Authorization level of a basic admin session
+     ** @see _isAllowed() */
+    const ADMIN_RESOURCE = 'Brituy_SimpleBlog::category_save';
+    
     protected $jsonFactory;
     protected $_categoriesFactory;
 

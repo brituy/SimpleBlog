@@ -88,17 +88,17 @@ class Blog extends AbstractModel implements BlogInterface, IdentityInterface
      ** @return string|null */
     public function getContent()
     {
-        return $this->getData(self::CONTENT);;
+        return $this->getData(self::CONTENT);
     }
 
     /** Get content
      ** @return string|null */
     public function getShortContent()
     {
-        $fullContent=$this->getData(self::CONTENT);
-        $shortContent=substr($fullContent, 0, 15);
+        $fullContent = $this->getData(self::CONTENT);
+        $shortContent = substr($fullContent, 0, 160);
         
-        return $this->getData(self::CONTENT);
+        return $shortContent;
     }
     
     
@@ -149,5 +149,5 @@ class Blog extends AbstractModel implements BlogInterface, IdentityInterface
     public function setContent($content)
     {
         return $this->setData(self::CONTENT, $content);
-    }
+    }  
 }

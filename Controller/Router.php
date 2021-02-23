@@ -36,7 +36,7 @@ class Router implements RouterInterface
         $identifier = trim($request->getPathInfo(), '/');
         $identifierParts = explode('/', $identifier);
         
-        if (!in_array('blog',$identifierParts)) { return false; }
+        if (!in_array($baseUrl,$identifierParts)) { return false; }
 
         $reverseIdentifier = array_reverse($identifierParts);
         
@@ -50,7 +50,7 @@ class Router implements RouterInterface
         switch ($action)
         {
             case 'blog_id':
-                $controller = 'article';
+                $controller = 'index';
                 $request->setParam('blog_id', $dataid);
                 $action = 'view';
                 break;
