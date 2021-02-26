@@ -23,6 +23,7 @@ class AuthorsOpt implements OptionSourceInterface
     {
         /** @var CategoriesCollectionFactory $collection */
         $collection = $this->authorsCollectionFactory->create();
+        $collection->setOrder('author','ASC');
 
         $authorsOptions = [];
         foreach ($collection as $item) {

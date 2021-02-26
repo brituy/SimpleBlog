@@ -23,6 +23,7 @@ class CategoriesOpt implements OptionSourceInterface
     {
         /** @var CategoriesCollectionFactory $collection */
         $collection = $this->categoriesCollectionFactory->create();
+        $collection->setOrder('category','ASC');
 
         $categoriesOptions = [];
         foreach ($collection as $item) 

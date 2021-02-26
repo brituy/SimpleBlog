@@ -1,10 +1,43 @@
 <?xml version="1.0"?>
 
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <update handle="styles"/>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    
     <body>
+        <referenceContainer name="left">
+            <block class="Brituy\SimpleBlog\Block\Adminhtml\Blog\Edit\Tabs" name="brituy_simpleblog_blog.edit.tabs">
+                <block class="Brituy\SimpleBlog\Block\Adminhtml\Blog\Edit\Tab\Article" name="simpleblog_edit_tab_article" />
+                <block class="Brituy\SimpleBlog\Block\Adminhtml\Blog\Edit\Tab\Authors" name="simpleblog_edit_tab_authors" />
+                <block class="Brituy\SimpleBlog\Block\Adminhtml\Blog\Edit\Tab\Categories" name="simpleblog_edit_tab_categories" />
+                
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">blog_tab_article</argument>
+                    <argument name="block" xsi:type="string">simpleblog_edit_tab_article</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">blog_tab_authors</argument>
+                    <argument name="block" xsi:type="string">simpleblog_edit_tab_authors</argument>
+                </action>                    
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">blog_tab_categories</argument>
+                    <argument name="block" xsi:type="string">simpleblog_edit_tab_categories</argument>
+                </action>
+            </block>
+        </referenceContainer>
         <referenceContainer name="content">
-            <block class="Brituy\SimpleBlog\Block\Adminhtml\Blog\Edit" name="edit"/>
+            <block class="Brituy\SimpleBlog\Block\Adminhtml\Blog\Edit" name="brituy_simpleblog_blog_grid_block.edit"/>
         </referenceContainer>
     </body>
+    
+    <!-- for _beforeToHtml in Tabs block
+    <body>
+        <referenceContainer name="left">
+            <block class="Brituy\SimpleBlog\Block\Adminhtml\Blog\Edit\Tabs"
+                   name="brituy_simpleblog_blog_grid_block.edit.tabs"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Brituy\SimpleBlog\Block\Adminhtml\Blog\Edit"
+                   name="brituy_simpleblog_blog_grid_block.edit"/>
+        </referenceContainer>
+    </body>
+    -->
 </page>

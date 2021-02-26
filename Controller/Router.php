@@ -35,22 +35,22 @@ class Router implements RouterInterface
         $baseUrl = $this->config->getBaseRoute();
         $identifier = trim($request->getPathInfo(), '/');
         $identifierParts = explode('/', $identifier);
-        
+
         if (!in_array($baseUrl,$identifierParts)) { return false; }
 
         $reverseIdentifier = array_reverse($identifierParts);
-        
+
         if (count($reverseIdentifier) > 2)
         {
             $dataid = array_shift($reverseIdentifier);
             $action = array_shift($reverseIdentifier);
             $controller = array_shift($reverseIdentifier);
         }else{ $action='index'; }
-        
+
         switch ($action)
         {
             case 'blog_id':
-                $controller = 'index';
+                $controller = 'article';
                 $request->setParam('blog_id', $dataid);
                 $action = 'view';
                 break;
