@@ -7,6 +7,8 @@ use Brituy\SimpleBlog\Model\BlogFactory;
 use Brituy\SimpleBlog\Api\Data\BlogInterface;
 use Brituy\SimpleBlog\Model\ResourceModel\Blog\Collection as BlogCollection;
 use Brituy\SimpleBlog\Model\ResourceModel\Blog\CollectionFactory as BlogCollectionFactory;
+use Brituy\SimpleBlog\Model\ResourceModel\Categories\Collection as CategoriesCollection;
+use Brituy\SimpleBlog\Model\ResourceModel\Categories\CollectionFactory as CategoriesCollectionFactory;
 use Brituy\SimpleBlog\Model\ResourceModel\Authors\Collection as AuthorsCollection;
 use Brituy\SimpleBlog\Model\ResourceModel\Authors\CollectionFactory as AuthorsCollectionFactory;
 use Magento\Framework\Exception\LocalizedException;
@@ -23,7 +25,6 @@ class View extends Template implements IdentityInterface
     const NUMBER_RELATED_POSTS = 10;
 
     protected $_blogCollectionFactory;
-    protected $_authorCollectionFactory;
     protected $config;
 
     /** Construct
@@ -31,6 +32,7 @@ class View extends Template implements IdentityInterface
      * @param \Brituy\SimpleBlog\Model\ResourceModel\Blog\CollectionFactory $blogCollectionFactory,
      * @param array $data */
     public function __construct(Context $context,BlogCollectionFactory $blogCollectionFactory,
+    				CategoriesCollectionFactory $categoriesCollectionFactory,
     				AuthorsCollectionFactory $authorCollectionFactory,
     				Config $config,array $data=[])
     {
@@ -38,6 +40,7 @@ class View extends Template implements IdentityInterface
         $this->config = $config;
         $this->_blogCollectionFactory = $blogCollectionFactory;
         $this->_authorCollectionFactory = $authorCollectionFactory;
+        $this->_categoriesCollectionFactory = $categoriesCollectionFactory;
     }
 
     /** @return Article|null */
@@ -47,8 +50,8 @@ class View extends Template implements IdentityInterface
         
         //return $this->blogFactory->create()->load($blogid);
         $article = $this->_blogCollectionFactory
-        	->create()
-        	->addFilter('blog_id', $blogid);
+        			->create()
+        			->addFilter('blog_id', $blogid);
         $this->setData('article', $article);
         
         return $this->getData('article');
@@ -96,14 +99,26 @@ class View extends Template implements IdentityInterface
     protected function _prepareLayout()
     {
         $blogTitle = $this->config->getMenuTitle();
+        $currentArticle = $this->getArticle()->getColumnValues('title');
+        $currentCategory = $this->getArticle()->getColumnValues('category_id');
+        $categoryName = $this->_categoriesCollectionFactory->create()->addFilter('category_id', $currentCategory)->getColumnValues('category');
+        
         $breadcrumbsBlock = $this->getLayout()->getBlock('breadcrumbs');
 
         if ($breadcrumbsBlock)
         {
             $breadcrumbsBlock->addCrumb('home',['label'=>__('Home'),
             					'title'=>__('Go to Home Page'),
-            					'link'=>$this->_storeManager->getStore()->getBaseUrl()]);
-            $breadcrumbsBlock->addCrumb('blog',['label'=>__($blogTitle),'title'=>__($blogTitle),'link'=>null,]);
+            					'link'=>$this->_storeManager->getStore()->getBaseUrl(),]);
+            $breadcrumbsBlock->addCrumb('blog',['label'=>__($blogTitle),
+            					'title'=>__($blogTitle),
+            					'link'=>$this->config->getBaseUrl(),]);
+            $breadcrumbsBlock->addCrumb('category',['label'=>__($categoryName[0]),
+            					'title'=>__($categoryName[0]),
+            					'link'=>$this->getUrl('simpleblog',['category_id'=>$currentCategory[0]]),]);
+            $breadcrumbsBlock->addCrumb('article',['label'=>__($currentArticle[0]),
+            					'title'=>__($currentArticle[0]),
+            					'link'=>null,]);
         }
 
         return $this;

@@ -1,9 +1,9 @@
 <?php
 namespace Brituy\SimpleBlog\Block\Adminhtml\Blog;
 
+use Magento\Framework\Registry;
 use Magento\Backend\Block\Widget\Form\Container;
 use Magento\Backend\Block\Widget\Context;
-use Magento\Framework\Registry;
 use Brituy\SimpleBlog\Model\Article;
 
 /** Block for edit page */

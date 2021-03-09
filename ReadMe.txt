@@ -12,3 +12,4 @@ Magento 2.4 Simple Blog module.
 		Added frontend pagination.
 23.02.2021	Added ACL (2 way controll).
 26.02.2021	Backend blog edit form with tabs.
+02.03.2021	Router bug fixes.

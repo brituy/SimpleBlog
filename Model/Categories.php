@@ -17,4 +17,9 @@ class Categories extends \Magento\Framework\Model\AbstractModel
     {
         return $this->getCollection()->addFieldToFilter('category_id', $categoryid)->getItems();
     }
+    
+    public function getCategories()
+    {
+        return $this->getCollection();
+    }
 }

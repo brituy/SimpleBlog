@@ -29,12 +29,8 @@ class Authors extends Generic implements TabInterface
      * CategoriesOpt $categoriesOptSource,
      * AuthorsOpt $authorsOptSource,
      * @param array $data */
-    public function __construct(
-        Context $context,
-        Registry $registry,
-        FormFactory $formFactory,
-        array $data = []
-    ) {
+    public function __construct(Context $context,Registry $registry,FormFactory $formFactory,array $data = [])
+    {
         $this->formFactory   = $formFactory;
         $this->registry      = $registry;
 
@@ -52,18 +48,12 @@ class Authors extends Generic implements TabInterface
         $form = $this->formFactory->create();
         $form->setHtmlIdPrefix('author_');
 
-        // new filed
-        if ($author->getId()) {
-            $fieldset = $form->addFieldset('base_fieldset',['legend'=>__('Edit Author Data'),'class'=>'fieldset-wide']);
-            $fieldset->addField('author_id', 'hidden', ['name' => 'author_id']);
-        } else {
-            $fieldset = $form->addFieldset('base_fieldset',['legend'=>__('Add Author Data'),'class'=>'fieldset-wide']);
-        }
+        $afieldset = $form->addFieldset('base_fieldset',['legend'=>__('Add Author Data'),'class'=>'fieldset-wide']);
 
-        $fieldset->addField('author','text',
+        $afieldset->addField('author','text',
         	['name'=>'author_name','label'=>__('Name'),'title'=>__('Name'),'required'=>true]);
 
-        $fieldset->addField('author_mail','text',
+        $afieldset->addField('author_mail','text',
         	['name'=>'author_mail','label'=>__('E-Mail'),'title'=>__('E-Mail'),'required'=>true]);
 
         $form->addValues($author->getData());

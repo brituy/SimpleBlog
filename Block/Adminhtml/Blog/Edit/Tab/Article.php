@@ -46,16 +46,9 @@ class Article extends Generic implements TabInterface
      * CategoriesOpt $categoriesOptSource,
      * AuthorsOpt $authorsOptSource,
      * @param array $data */
-    public function __construct(
-        Context $context,
-        Registry $registry,
-        FormFactory $formFactory,
-        WysiwygConfig $wysiwygConfig,
-        Status $status,
-        CategoriesOpt $categoriesOptSource,
-        AuthorsOpt $authorsOptSource,
-        array $data = []
-    ) {
+    public function __construct(Context $context,Registry $registry,FormFactory $formFactory,WysiwygConfig $wysiwygConfig,
+    				Status $status,CategoriesOpt $categoriesOptSource,AuthorsOpt $authorsOptSource,array $data=[])
+    {
         $this->wysiwygConfig = $wysiwygConfig;
         $this->status = $status;
         $this->formFactory   = $formFactory;

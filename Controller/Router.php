@@ -38,6 +38,9 @@ class Router implements RouterInterface
 
         if (!in_array($baseUrl,$identifierParts)) { return false; }
 
+        //$this->eventManager->dispatch('core_controller_router_match_before',
+        //['router' => $this,'condition' => new DataObject(['identifier' => $identifier, 'continue' => true]),]);
+        
         $reverseIdentifier = array_reverse($identifierParts);
 
         if (count($reverseIdentifier) > 2)

@@ -1,9 +1,9 @@
 <?php
 namespace Brituy\SimpleBlog\Block\Adminhtml\Blog\Edit;
 
-use Magento\Backend\Block\Widget\Context;
 use Magento\Framework\Data\FormFactory;
 use Magento\Framework\Registry;
+use Magento\Backend\Block\Widget\Context;
 use Magento\Backend\Block\Widget\Form\Generic;
 
 class Form extends Generic

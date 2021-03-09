@@ -104,7 +104,8 @@ class BlogList extends Template implements IdentityInterface
             					'link'=>$this->_storeManager->getStore()->getBaseUrl()]);
             if ($categoryid)
             {
-                $breadcrumbsBlock->addCrumb('blog',['label'=>__(($blogTitle).' :: '.$categoryName[0]),'title'=>__($blogTitle),'link'=>null,]);
+                $breadcrumbsBlock->addCrumb('blog',['label'=>__($blogTitle),'title'=>__($blogTitle),'link'=>$this->config->getBaseUrl(),]);
+                $breadcrumbsBlock->addCrumb('category',['label'=>__($categoryName[0]),'title'=>__($categoryName[0]),'link'=>null,]);
             }else { $breadcrumbsBlock->addCrumb('blog',['label'=>__($blogTitle),'title'=>__($blogTitle),'link'=>null,]); }
         }
 
