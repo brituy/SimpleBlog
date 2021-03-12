@@ -53,7 +53,7 @@ class AuthorsOpt implements OptionSourceInterface
     {
         $allOptions = $this->getOptions();
         $newOptions = [
-            'none' => __('Please select')
+            'none' => __('Select ...')
         ];
         return $newOptions + $allOptions;
     }

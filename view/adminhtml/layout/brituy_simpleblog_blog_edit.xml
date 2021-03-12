@@ -1,7 +1,14 @@
 <?xml version="1.0"?>
 
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="blog_new_form"/>
+        </referenceContainer>
+    </body>
     
+    <!-- form with tabs, layout="admin-2columns-left"
     <body>
         <referenceContainer name="left">
             <block class="Brituy\SimpleBlog\Block\Adminhtml\Blog\Edit\Tabs" name="brituy_simpleblog_blog.edit.tabs">
@@ -27,6 +34,7 @@
             <block class="Brituy\SimpleBlog\Block\Adminhtml\Blog\Edit" name="brituy_simpleblog_blog_grid_block.edit"/>
         </referenceContainer>
     </body>
+    -->
     
     <!-- for _beforeToHtml in Tabs block
     <body>

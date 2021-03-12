@@ -1,8 +1,8 @@
 <?php
 namespace Brituy\SimpleBlog\Block\Adminhtml\Blog\Edit;
 
-use Magento\Backend\Block\Widget\Context;
 use Magento\Framework\Data\FormFactory;
+use Magento\Backend\Block\Widget\Context;
 
 class Form extends \Magento\Backend\Block\Widget\Form
 {
@@ -14,12 +14,9 @@ class Form extends \Magento\Backend\Block\Widget\Form
 
     /** @param FormFactory   $formFactory
      * @param Context $context
-     * @param array   $data */
-    public function __construct(
-        FormFactory $formFactory,
-        Context $context,
-        array $data = []
-    ) {
+     * @param array  $data  */
+    public function __construct(FormFactory $formFactory,Context $context,array $data = [])
+    {
         $this->formFactory = $formFactory;
         $this->context     = $context;
 

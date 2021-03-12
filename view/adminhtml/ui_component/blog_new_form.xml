@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">blog_new_form.blog_new_form_data_source</item>
+            <item name="deps" xsi:type="string">blog_new_form.blog_new_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">blog_new_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Brituy\SimpleBlog\Ui\Component\Form\Buttons\BackButton</item>
+            <item name="save" xsi:type="string">Brituy\SimpleBlog\Ui\Component\Form\Buttons\SaveButton</item>
+            <item name="save_and_continue" xsi:type="string">Brituy\SimpleBlog\Ui\Component\Form\Buttons\SaveAndContinueButton</item>
+        </item>
+    </argument>
+    
+    <dataSource name="blog_new_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Brituy\SimpleBlog\Ui\DataProvider\Blog\Form\NewBlogDataProvider</argument>
+            <argument name="name" xsi:type="string">blog_new_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">blog_id</argument>
+            <argument name="requestFieldName" xsi:type="string">blog_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="brituy_simpleblog/blog/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+
+    <container name="sidebar">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="component" xsi:type="string">Brituy_SimpleBlog/js/blog/form/area</item>
+                <item name="area" xsi:type="string">sidebar</item>
+            </item>
+        </argument>
+
+        <fieldset name="publish">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Main Information</item>
+                    <item name="collapsible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+
+            <field name="visibility">
+                <argument name="data" xsi:type="array">
+                    <item name="options" xsi:type="object">Brituy\SimpleBlog\Model\Source\Status</item>
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Visibility</item>
+                        <item name="componentType" xsi:type="string">field</item>
+                        <item name="formElement" xsi:type="string">select</item>
+                        <item name="elementTmpl" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                        <item name="filterOptions" xsi:type="boolean">false</item>
+                        <item name="showCheckbox" xsi:type="boolean">false</item>
+                        <item name="disableLabel" xsi:type="boolean">true</item>
+                        <item name="multiple" xsi:type="boolean">false</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+
+            <field name="blog_date">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Blog Date</item>
+                        <item name="dataType" xsi:type="string">string</item>
+                        <item name="formElement" xsi:type="string">date</item>
+                        <item name="options" xsi:type="array">
+                            <item name="showsTime" xsi:type="boolean">false</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+
+            <field name="author_id">
+                <argument name="data" xsi:type="array">
+                    <item name="options" xsi:type="object">Brituy\SimpleBlog\Model\Source\AuthorsOpt</item>
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Author</item>
+                        <item name="componentType" xsi:type="string">field</item>
+                        <item name="formElement" xsi:type="string">select</item>
+                        <item name="elementTmpl" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                        <item name="filterOptions" xsi:type="boolean">false</item>
+                        <item name="showCheckbox" xsi:type="boolean">false</item>
+                        <item name="disableLabel" xsi:type="boolean">true</item>
+                        <item name="multiple" xsi:type="boolean">false</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+            
+            <field name="category_id">
+                <argument name="data" xsi:type="array">
+                    <item name="options" xsi:type="object">Brituy\SimpleBlog\Model\Source\CategoriesOpt</item>
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Category</item>
+                        <item name="componentType" xsi:type="string">field</item>
+                        <item name="formElement" xsi:type="string">select</item>
+                        <item name="elementTmpl" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                        <item name="filterOptions" xsi:type="boolean">false</item>
+                        <item name="showCheckbox" xsi:type="boolean">false</item>
+                        <item name="disableLabel" xsi:type="boolean">true</item>
+                        <item name="multiple" xsi:type="boolean">false</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+            
+            <container name="button_cat">
+                <argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">
+			    <item name="title" xsi:type="string" translate="true">Add Category</item>
+			    <item name="component" xsi:type="string">Magento_Ui/js/form/components/button</item>
+			    <item name="actions" xsi:type="array">
+				<item name="0" xsi:type="array">
+				    <item name="targetName" xsi:type="string">blog_new_form.blog_new_form.sidebar.publish.modal</item>
+				    <item name="actionName" xsi:type="string">toggleModal</item>
+				</item>
+				<item name="1" xsi:type="array">
+				    <item name="targetName" xsi:type="string">blog_new_form.blog_new_form.sidebar.publish.modal.blog_new_category_form</item>
+				    <item name="actionName" xsi:type="string">render</item>
+				</item>
+			    </item>
+			    <item name="provider" xsi:type="boolean">false</item>
+			</item>
+                </argument>
+            </container>
+            
+            <modal name="modal">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="component" xsi:type="string">Magento_Ui/js/modal/modal-component</item>
+                        <item name="options" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Add New Category</item>
+                            <item name="type" xsi:type="string">slide</item>
+                            <item name="buttons" xsi:type="array">
+                                <item name="0" xsi:type="array">
+                                    <item name="text" xsi:type="string" translate="true">Close</item>
+                                    <item name="actions" xsi:type="array">
+                                        <item name="0" xsi:type="string">closeModal</item>
+                                    </item>
+                                </item>
+                                <item name="1" xsi:type="array">
+                                    <item name="text" xsi:type="string" translate="true">Save Category</item>
+                                    <item name="class" xsi:type="string">action-primary</item>
+                                    <item name="actions" xsi:type="array">
+                                        <item name="0" xsi:type="array">
+                                            <item name="targetName" xsi:type="string">index=blog_new_category_form</item>
+                                            <item name="actionName" xsi:type="string">save</item>
+                                        </item>
+                                        <!--<item name="1" xsi:type="string">closeModal</item>-->
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+                
+                <insertForm name="blog_new_category_form">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="autoRender" xsi:type="boolean">false</item>
+                            <item name="dataScope" xsi:type="string">blog_new_category_form</item>
+                            <item name="externalProvider" xsi:type="string">blog_new_category_form.new_category_form_data_source</item>
+                            <item name="ns" xsi:type="string">blog_new_category_form</item>
+                            <item name="render_url" xsi:type="url" path="mui/index/render"/>
+                            <item name="realTimeLink" xsi:type="boolean">true</item>
+                            <!--
+                            <item name="dataLinks" xsi:type="array">
+                                <item name="imports" xsi:type="boolean">false</item>
+                                <item name="exports" xsi:type="boolean">true</item>
+                            </item>
+                            <item name="behaviourType" xsi:type="string">simple</item>
+                            <item name="externalFilterMode" xsi:type="boolean">true</item>
+                            <item name="imports" xsi:type="array">
+                                <item name="category_id" xsi:type="string">${ $.provider }:data.category_id</item>
+                            </item>
+                            <item name="exports" xsi:type="array">
+                                <item name="category_id" xsi:type="string">${ $.externalProvider }:data.category_id</item>
+                            </item>-->
+                            <!--<item name="component" xsi:type="string">Magento_Ui/js/form/components/insert-listing</item>-->
+                        </item>
+                    </argument>
+                </insertForm>
+
+            </modal>
+                
+        </fieldset>
+    </container>
+
+    <container name="main">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="component" xsi:type="string">Brituy_SimpleBlog/js/blog/form/area</item>
+                <item name="area" xsi:type="string">main</item>
+            </item>
+        </argument>
+
+        <fieldset name="general">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Article Information</item>
+                    <item name="collapsible" xsi:type="boolean">true</item>
+                    <item name="opened" xsi:type="boolean">true</item>
+                    <item name="area" xsi:type="string">main</item>
+                </item>
+            </argument>
+
+            <field name="blog_id">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="visible" xsi:type="boolean">false</item>
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="dataScope" xsi:type="string">blog_id</item>
+                        <item name="component" xsi:type="string">Brituy_SimpleBlog/js/blog/form/id</item>
+                    </item>
+                </argument>
+            </field>
+
+            <field name="title">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Title</item>
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+
+            <field name="content">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Content</item>
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="formElement" xsi:type="string">wysiwyg</item>
+                        <item name="wysiwyg" xsi:type="boolean">true</item>
+                        <item name="wysiwygConfigData" xsi:type="array">
+                            <item name="is_pagebuilder_enabled" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+        </fieldset>
+
+    </container>
+</form>

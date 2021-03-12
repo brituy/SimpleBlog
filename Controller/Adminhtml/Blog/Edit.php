@@ -61,7 +61,7 @@ class Edit extends \Magento\Backend\App\Action
         );
         return $resultPageFactory;
     }
-    
+
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('Brituy_SimpleBlog::blog_save');

@@ -3,12 +3,12 @@ namespace Brituy\SimpleBlog\Ui\DataProvider\Blog\Form;
 
 use Magento\Framework\UrlInterface;
 use Magento\Ui\DataProvider\AbstractDataProvider;
-use Brituy\SimpleBlog\Model\ResourceModel\Authors\CollectionFactory;
+use Brituy\SimpleBlog\Model\ResourceModel\Blog\CollectionFactory;
 
 /**
- * DataProvider for new category form
+ * DataProvider for new blog form
  */
-class NewAuthorDataProvider extends AbstractDataProvider
+class NewBlogDataProvider extends AbstractDataProvider
 {
     /** @var UrlInterface */
     protected $urlBuilder;

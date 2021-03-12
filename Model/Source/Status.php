@@ -14,8 +14,14 @@ class Status implements ArrayInterface
     public function toOptionArray()
     {
         $options = [
-            self::ENABLED => __('Visible'),
-            self::DISABLED => __('UnVisible'),
+            [
+                'label' => __('UnVisible'),
+                'value' => self::DISABLED,
+            ],
+            [
+                'label' => __('Visible'),
+                'value' => self::ENABLED,
+            ],
         ];
         return $options;
     }
