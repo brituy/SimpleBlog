@@ -4,37 +4,43 @@
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Brituy_SimpleBlog::simpleblog"
-             title="Brituy SimpleBlog"
+        <update id="Brituy::core"
+             title="Brituy"
              module="Brituy_SimpleBlog"
              sortOrder="51"
-             resource="Brituy_SimpleBlog::simpleblog"/>
+             resource="Magento_Backend::content"/>
+        <add id="Brituy_SimpleBlog::section"
+             title="Simple Blog"
+             module="Brituy_SimpleBlog"
+             sortOrder="0"
+             resource="Brituy_SimpleBlog::section"
+             parent="Brituy::core"/>
         <add id="Brituy_SimpleBlog::article"
              title="Manage Articles"
              module="Brituy_SimpleBlog"
              sortOrder="10"
              action="brituy_simpleblog/blog/index"
              resource="Brituy_SimpleBlog::article"
-             parent="Brituy_SimpleBlog::simpleblog"/>
+             parent="Brituy_SimpleBlog::section"/>
         <add id="Brituy_SimpleBlog::author"
              title="Manage Authors"
              module="Brituy_SimpleBlog"
              sortOrder="20"
              action="brituy_simpleblog/author/index"
              resource="Brituy_SimpleBlog::author"
-             parent="Brituy_SimpleBlog::simpleblog"/>
+             parent="Brituy_SimpleBlog::section"/>
         <add id="Brituy_SimpleBlog::category"
              title="Manage Categories"
              module="Brituy_SimpleBlog"
              sortOrder="30"
              action="brituy_simpleblog/category/index"
              resource="Brituy_SimpleBlog::category"
-             parent="Brituy_SimpleBlog::simpleblog"/>
+             parent="Brituy_SimpleBlog::section"/>
         <add id="Brituy_SimpleBlog::blog_config"
              title="Configuration"
              module="Brituy_SimpleBlog"
              sortOrder="99"
-             parent="Brituy_SimpleBlog::simpleblog"
+             parent="Brituy_SimpleBlog::section"
              action="adminhtml/system_config/edit/section/simpleblog"
              resource="Brituy_SimpleBlog::simpleblog_config"/>
     </menu>

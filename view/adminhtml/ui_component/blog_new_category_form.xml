@@ -14,6 +14,7 @@
         <item name="template" xsi:type="string">templates/form/collapsible</item>
         <item name="config" xsi:type="array">
             <item name="ajaxSaveType" xsi:type="string">simple</item>
+            <item name="ajaxSave" xsi:type="boolean">true</item>
         </item>
     </argument>
     

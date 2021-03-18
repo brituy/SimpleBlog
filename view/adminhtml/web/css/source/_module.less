@@ -1,3 +1,195 @@
-@import "module/post/_form.less";
-@import "module/post/_list.less";
-@import "module/category/_edit.less";
+.blog__add-area {
+    &.sidebar {
+        float: left;
+        width: calc(~'100% * 0.25 - 10px');
+    }
+
+    &.main {
+        float: right;
+        width: calc(~'100% * 0.75 - 10px');
+    }
+
+    .admin__field {
+        margin-left: 0;
+
+        .admin__field-label {
+            float: none;
+            margin-left: 0;
+            text-align: left;
+            width: 100%;
+        }
+
+        .admin__field-control {
+            width: 100%;
+            float: none;
+            margin-left: 0;
+
+            input[type="text"], select, textarea {
+                width: 100%;
+
+                //&._has-datepicker {
+                //    width: 85%;
+                //}
+            }
+        }
+    }
+}
+
+.blog__add-area.main {
+    .fieldset-wrapper[data-index="general"] {
+        .fieldset-wrapper-title {
+            display: none;
+        }
+
+        .admin__fieldset {
+            padding-top: 0;
+        }
+    }
+
+    .admin__field {
+        &._warn {
+            .admin__field-note {
+                color: #e22626;
+            }
+        }
+
+        &[data-index="is_short_content"] {
+            margin-bottom: 1rem;
+            text-align: right;
+        }
+    }
+}
+
+.blog__add-area.sidebar {
+    background: #f8f8f8;
+    padding: 0 1.5rem;
+
+    .fieldset-wrapper-title {
+        display: none;
+    }
+
+    .admin__fieldset {
+        padding-top: 0;
+        padding-bottom: 2rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid #e3e3e3;
+
+        > .admin__field {
+            margin-bottom: 0;
+        }
+    }
+
+    .fieldset-wrapper {
+        &:first-child {
+            margin-top: 1.5rem;
+        }
+
+        &:last-child {
+            .admin__fieldset {
+                border-bottom: 0;
+
+            }
+        }
+    }
+
+    .tokenize {
+        .tokens-container {
+            position: relative;
+            list-style: none;
+            padding: 0;
+            height: auto;
+            min-height: 34px;
+            cursor: text;
+
+            .token {
+                background-color: #f5f5f5;
+                border: 1px solid #a79d95;
+                border-radius: 1px;
+                display: inline-block;
+                margin: .5rem .5rem 0 0;
+                position: relative;
+                vertical-align: middle;
+                padding: 0.3rem 2.4rem 0.4rem 1rem;
+                font-size: 1.2rem;
+
+                .dismiss {
+                    position: absolute;
+                    right: .5rem;
+                    text-decoration: none;
+                    cursor: pointer;
+                    color: #a79d95;
+
+                    &:after {
+                        font-family: 'Admin Icons';
+                        font-size: .5em;
+                        content: '\e62f';
+                    }
+                }
+            }
+
+            .token-search {
+                padding: 0.6rem 1rem 0.6rem;
+                background-color: #fff;
+                border: 1px solid #adadad;
+                border-radius: 1px;
+                width: 100% !important;
+                margin-top: .5rem;
+
+                input {
+                    padding: 0;
+                    margin: 0;
+                    line-height: 1em;
+                    border: 0;
+                    background: 0 0;
+                    border-left: none;
+                    border-right: none;
+                    outline: 0;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .file-uploader {
+        .file-uploader-summary {
+            width: 100%;
+
+            .file-uploader-preview {
+                width: 100%;
+                height: auto;
+
+                img {
+                    position: relative;
+                }
+            }
+        }
+    }
+}
+
+body.blog-add-edit {
+    .page-main-actions {
+        position: relative;
+
+        button.preview {
+            position: absolute;
+            left: 0;
+            background: #e3e3e3;
+            padding-left: 4rem;
+            padding-right: 4rem;
+
+            &:hover {
+                background: #d3d3d3;
+            }
+
+            &.loading {
+                opacity: 0.3;
+            }
+        }
+    }
+
+    .page-actions-inner {
+        &:before {
+            margin-left: 16rem;
+        }
+    }
+}
