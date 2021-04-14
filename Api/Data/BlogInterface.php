@@ -1,7 +1,6 @@
 <?php
 namespace Brituy\SimpleBlog\Api\Data;
 
-
 interface BlogInterface
 {
     /** Constants for keys of data array. Identical to the name of the getter in snake case */

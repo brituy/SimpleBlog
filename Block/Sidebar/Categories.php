@@ -36,11 +36,27 @@ class Categories extends Template implements IdentityInterface
             return $this->config->getBaseRoute();
     }
 
+    public function getCategoryUrlById($categoryName)
+    {
+        //$categoryName = $this->_categoriesCollection->create()->addFieldToFilter('category_id', $categoryid)->getData('category');
+        $categoryNameParts = explode(' ', $categoryName);
+
+        $categoryUrl = array_shift($categoryNameParts);
+        while (count($categoryNameParts) > 0):
+            if (count($categoryNameParts) > 0) { $categoryUrl .= "_"; }
+            $categoryUrl .= array_shift($categoryNameParts);
+        endwhile;
+        $categoryUrl .= ".html";
+        
+        return $categoryUrl;
+    }
+    
     public function getCategories()
     {
     	$categoriesList = $this->_categoriesCollection->create();
+    	$this->setData('categories', $categoriesList);
 
-    	return $categoriesList;
+    	return $this->getData('categories');
     }
     
     public function getSelectedCategory()
@@ -65,7 +81,8 @@ class Categories extends Template implements IdentityInterface
      * @return string[]  */
     public function getIdentities()
     {
-        return  $this->getCategories()->getIdentities();
+        //return  $this->getCategories()->getIdentities();
+        return [\Brituy\SimpleBlog\Model\Categories::CACHE_TAG . '_' . 'categories'];
     }
 
     /**

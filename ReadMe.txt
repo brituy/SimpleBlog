@@ -14,11 +14,13 @@ Magento 2.4 Simple Blog module.
 26.02.2021	Backend blog edit form with tabs.
 02.03.2021	Router bug fixes.
 17.03.2021	Backend Modal form added.
-	URL Rewrite
-	Cart rule add discount
+14.04.2021	Add Category URL Rewrite
+	
 	Category save controller fix ajax
 	Category ui-select update after ajax magento 2 ui-select ajax reload
 	
+	
+	https://magento.stackexchange.com/questions/259730/in-magento-2-how-to-customize-a-sidebar-additional-in-product-details-page
 	
 https://stackoverflow.com/questions/57189359/magento-2-how-to-add-dynamic-url-for-ajax-call-from-uicomponent/57431164#57431164
 https://magento.stackexchange.com/questions/208249/for-ui-component-admin-form-field-with-ajax-updating-the-select-value

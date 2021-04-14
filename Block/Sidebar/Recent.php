@@ -96,7 +96,7 @@ class Recent extends Template implements IdentityInterface
      * @return string[]  */
     public function getIdentities()
     {
-        return  $this->getArticle()->getIdentities();
+        return [\Brituy\SimpleBlog\Model\Blog::CACHE_TAG . '_' . 'list'];
     }
 
     /**

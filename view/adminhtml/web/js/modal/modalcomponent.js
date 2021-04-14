@@ -8,7 +8,7 @@ define(['underscore', 'jquery', 'Magento_Ui/js/modal/modal-component', 'mage/url
         {
 		debugger;
 
-            var ajaxUrl = url.build('adminhtml/category/save');
+            var ajaxUrl = url.build('adminhtml/category/modalsave');
 
             var data = {
                 'form_key': window.FORM_KEY,

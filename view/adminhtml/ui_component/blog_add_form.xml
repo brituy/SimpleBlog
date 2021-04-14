@@ -164,7 +164,6 @@
                                             <item name="targetName" xsi:type="string">blog_new_category_form.blog_new_category_form</item>
                                             <item name="actionName" xsi:type="string">submit</item>
                                         </item>
-                                        <!--<item name="1" xsi:type="string">closeModal</item>-->
                                     </item>
                                 </item>
                             </item>

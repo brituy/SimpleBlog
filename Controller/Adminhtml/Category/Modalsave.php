@@ -10,16 +10,16 @@ use Magento\Framework\View\Result\PageFactory;
 use Brituy\SimpleBlog\Model\Categories;
 use Brituy\SimpleBlog\Model\CategoriesFactory;
 
-class Save extends Action
+class Modalsave extends Action
 {
     /** Authorization level of a basic admin session
      ** @see _isAllowed() */
     const ADMIN_RESOURCE = 'Brituy_SimpleBlog::category_save';
-
+    
     protected $_coreRegistry;
-    //protected $_resultPageFactory;
+    protected $_resultPageFactory;
     protected $_categoriesFactory;
-
+ 
     public function __construct(
         Context $context,
         Registry $coreRegistry,
@@ -30,16 +30,16 @@ class Save extends Action
         $this->_coreRegistry = $coreRegistry;
         $this->_resultPageFactory = $resultPageFactory;
         $this->_categoriesFactory = $categoriesFactory;
-
+ 
     }
-
+    
     /** @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity) */
     public function execute()
     {
         $data = $this->getRequest()->getPostValue();
-
-        if ($data)
+        
+        if ($data) 
         {
             $categoriesModel = $this->_categoriesFactory->create();
             $categoryid = $this->getRequest()->getParam('category_id');
@@ -50,24 +50,22 @@ class Save extends Action
                 	{
                 	    $message = __("Category name: %1 already exist!",$category);
                 	    $this->messageManager->addErrorMessage($message);
-
+                	    
                 	    $this->_redirect('*/*/edit', ['category' => $category, '_current' => true]);
                 	    return;
                 	}
                      }
-
+            
             $categoriesModel->setData($data);
-
+            
             try {
             		$categoriesModel->save();
                 	$this->messageManager->addSuccess(__('Category data was successfully saved.'));
-
+                	
                 	// Check if 'Save and Continue'
-                	$paramBack = $this->getRequest()->getParam('back');
-                	$paramAjax = $this->getRequest()->getParam('isAjax');
-                	if (($paramBack)&&($paramAjax))
+                	if ($this->getRequest()->getParam('back')) 
                 	{
-                    		$this->_redirect('*/*/', ['category_id' => $categoriesModel->getId(), '_current' => true]);
+                    		$this->_redirect('*/*/edit', ['category_id' => $categoriesModel->getId(), '_current' => true]);
                     		return;
                 	}
                 	$this->_redirect('*/*/');
@@ -75,7 +73,7 @@ class Save extends Action
                 }
                 catch (\Magento\Framework\Exception\LocalizedException $e) { $this->addSessionErrorMessages($e->getMessage()); }
                 catch (\Exception $e) { $this->messageManager->addException($e, __('Something went wrong while saving category data.')); }
-
+            
             $this->_getSession()->setFormData($data);
             $this->_redirect('*/*/edit', ['category_id' => $categoryid]);
         }

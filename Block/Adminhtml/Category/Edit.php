@@ -31,17 +31,6 @@ class Edit extends Container
 	parent::_construct();
 	
 	$this->buttonList->update('save primary', 'label', __('Save Category'));
-	$this->buttonList->add(
-		'saveandcontinue',[
-			'label' => __('Save and Continue Edit'),
-			'class' => 'save',
-			'data_attribute' => [
-				'mage-init' => [
-					'button' => ['event' => 'saveAndContinueEdit', 'target' => '#edit_form'],
-				],
-			],
-		],
-	-100);
 
 	$this->buttonList->update('delete', 'label', __('Delete'));
     }

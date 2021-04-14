@@ -40,7 +40,7 @@ class Router implements RouterInterface
 
         //$this->eventManager->dispatch('core_controller_router_match_before',
         //['router' => $this,'condition' => new DataObject(['identifier' => $identifier, 'continue' => true]),]);
-        
+
         $reverseIdentifier = array_reverse($identifierParts);
 
         if (count($reverseIdentifier) > 2)
@@ -72,6 +72,7 @@ class Router implements RouterInterface
         	->setActionName($action)
         	->setPathInfo($baseUrl . '/' . $controller . '/' . $action)
         	->setAlias(Url::REWRITE_REQUEST_PATH_ALIAS, $baseUrl . '/' . $controller . '/' . $action);
+
 
         return $this->actionFactory->create(Forward::class,['request' => $request]);
 
